@@ -1,0 +1,13 @@
+# IDE
+.idea/
+
+# Go build artifacts
+/yandex-tracker-mcp
+*.test
+*.out
+
+# Local secrets
+/.env
+
+# OS
+.DS_Store
