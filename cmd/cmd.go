@@ -28,6 +28,10 @@ func init() {
 	}
 
 	rootCmd.AddCommand(RunServer)
+	rootCmd.AddCommand(RunInit)
+	rootCmd.AddCommand(RunInstallClaude)
+	rootCmd.AddCommand(RunInstallCodex)
+	rootCmd.AddCommand(RunSnippet)
 	rootCmd.Version = VERSION
 }
 
