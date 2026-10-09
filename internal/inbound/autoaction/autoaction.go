@@ -2,23 +2,15 @@
 package autoaction
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicautoaction "github.com/hoggerty/yandex-tracker-mcp/internal/logic/autoaction"
 )
 
-func Tools(svc *logicautoaction.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&createTool{svc: svc},
-		&getTool{svc: svc},
-		&logsListTool{svc: svc},
-		&logGetTool{svc: svc},
+func Tools(svc *logicautoaction.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &createTool{svc: svc}, Safety: logicautoaction.CreateSafety},
+		{Tool: &getTool{svc: svc}, Safety: logicautoaction.GetSafety},
+		{Tool: &logsListTool{svc: svc}, Safety: logicautoaction.LogsListSafety},
+		{Tool: &logGetTool{svc: svc}, Safety: logicautoaction.LogGetSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

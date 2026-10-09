@@ -14,6 +14,7 @@ type createTool struct{ svc *logiccolumn.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("column_create",
 		mcp.WithDescription("Create a new column on a Yandex Tracker agile board."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("board_id", mcp.Required(), mcp.Description("Board id")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Board's current version (for optimistic locking)")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Column definition, e.g. {\"name\": \"...\", \"statuses\": [\"open\"]}")),

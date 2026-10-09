@@ -14,6 +14,7 @@ type addTool struct{ svc *logicworklog.Service }
 func (t *addTool) Description() mcp.Tool {
 	return mcp.NewTool("worklog_add",
 		mcp.WithDescription("Record time spent on a Yandex Tracker issue."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("start", mcp.Required(), mcp.Description("Work start timestamp, ISO 8601, e.g. 2021-09-21T15:30:00.000+0000")),
 		mcp.WithString("duration", mcp.Required(), mcp.Description("Time spent, ISO 8601 duration, e.g. P1DT4H")),

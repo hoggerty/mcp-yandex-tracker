@@ -30,6 +30,7 @@ import (
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/resolution"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/sprint"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/status"
+	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/trigger"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/user"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/version"
@@ -38,12 +39,17 @@ import (
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic"
 )
 
-func RegisterTools(s *server.MCPServer, svcs *logic.Services) {
-	s.AddTools(allTools(svcs)...)
+func RegisterTools(s *server.MCPServer, svcs *logic.Services, policy Policy) {
+	entries := policy.Apply(allTools(svcs))
+	tools := make([]server.ServerTool, len(entries))
+	for i, e := range entries {
+		tools[i] = e.ServerTool()
+	}
+	s.AddTools(tools...)
 }
 
-func allTools(svcs *logic.Services) []server.ServerTool {
-	var all []server.ServerTool
+func allTools(svcs *logic.Services) []tool.Entry {
+	var all []tool.Entry
 	all = append(all, issue.Tools(svcs.Issue)...)
 	all = append(all, queue.Tools(svcs.Queue)...)
 	all = append(all, user.Tools(svcs.User)...)

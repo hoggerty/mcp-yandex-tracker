@@ -2,24 +2,16 @@
 package column
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logiccolumn "github.com/hoggerty/yandex-tracker-mcp/internal/logic/column"
 )
 
-func Tools(svc *logiccolumn.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&listTool{svc: svc},
-		&getTool{svc: svc},
-		&createTool{svc: svc},
-		&editTool{svc: svc},
-		&deleteTool{svc: svc},
+func Tools(svc *logiccolumn.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &listTool{svc: svc}, Safety: logiccolumn.ListSafety},
+		{Tool: &getTool{svc: svc}, Safety: logiccolumn.GetSafety},
+		{Tool: &createTool{svc: svc}, Safety: logiccolumn.CreateSafety},
+		{Tool: &editTool{svc: svc}, Safety: logiccolumn.EditSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logiccolumn.DeleteSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

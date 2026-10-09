@@ -14,6 +14,7 @@ type transitionsListTool struct{ svc *logicissue.Service }
 func (t *transitionsListTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_transitions_list",
 		mcp.WithDescription("List the workflow transitions currently available for an issue."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 	)
 }

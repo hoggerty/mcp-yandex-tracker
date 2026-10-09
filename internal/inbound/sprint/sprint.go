@@ -2,25 +2,17 @@
 package sprint
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicsprint "github.com/hoggerty/yandex-tracker-mcp/internal/logic/sprint"
 )
 
-func Tools(svc *logicsprint.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&getTool{svc: svc},
-		&createTool{svc: svc},
-		&editTool{svc: svc},
-		&startTool{svc: svc},
-		&archiveTool{svc: svc},
-		&deleteTool{svc: svc},
+func Tools(svc *logicsprint.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &getTool{svc: svc}, Safety: logicsprint.GetSafety},
+		{Tool: &createTool{svc: svc}, Safety: logicsprint.CreateSafety},
+		{Tool: &editTool{svc: svc}, Safety: logicsprint.EditSafety},
+		{Tool: &startTool{svc: svc}, Safety: logicsprint.StartSafety},
+		{Tool: &archiveTool{svc: svc}, Safety: logicsprint.ArchiveSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicsprint.DeleteSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

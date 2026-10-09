@@ -14,6 +14,7 @@ type getTool struct{ svc *logicboard.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("board_get",
 		mcp.WithDescription("Get a Yandex Tracker agile board by id."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Board id")),
 	)
 }

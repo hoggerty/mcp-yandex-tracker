@@ -14,6 +14,7 @@ type createTool struct{ svc *logicfield.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("field_create",
 		mcp.WithDescription("Create a new global issue field."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Field definition, e.g. {\"id\": \"myField\", \"name\": {\"en\": \"My Field\", \"ru\": \"Моё поле\"}, \"category\": \"<category id>\", \"type\": \"ru.yandex.startrek.core.fields.StringFieldType\"}")),
 	)
 }

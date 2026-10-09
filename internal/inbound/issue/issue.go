@@ -2,47 +2,39 @@
 package issue
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicissue "github.com/hoggerty/yandex-tracker-mcp/internal/logic/issue"
 )
 
-func Tools(svc *logicissue.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&getTool{svc: svc},
-		&searchTool{svc: svc},
-		&countTool{svc: svc},
-		&createTool{svc: svc},
-		&updateTool{svc: svc},
-		&transitionsListTool{svc: svc},
-		&transitionExecuteTool{svc: svc},
-		&commentsListTool{svc: svc},
-		&commentAddTool{svc: svc},
-		&linksListTool{svc: svc},
-		&linkAddTool{svc: svc},
-		&changelogGetTool{svc: svc},
-		&moveTool{svc: svc},
-		&suggestTool{svc: svc},
-		&searchReleaseTool{svc: svc},
-		&checklistAddTool{svc: svc},
-		&checklistListTool{svc: svc},
-		&checklistEditTool{svc: svc},
-		&checklistDeleteTool{svc: svc},
-		&checklistItemDeleteTool{svc: svc},
-		&commentGetTool{svc: svc},
-		&commentEditTool{svc: svc},
-		&commentDeleteTool{svc: svc},
-		&commentReactionAddTool{svc: svc},
-		&linksListPaginateTool{svc: svc},
-		&linkDeleteTool{svc: svc},
-		&attachmentListTool{svc: svc},
-		&attachmentGetTool{svc: svc},
+func Tools(svc *logicissue.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &getTool{svc: svc}, Safety: logicissue.GetSafety},
+		{Tool: &searchTool{svc: svc}, Safety: logicissue.SearchSafety},
+		{Tool: &countTool{svc: svc}, Safety: logicissue.CountSafety},
+		{Tool: &createTool{svc: svc}, Safety: logicissue.CreateSafety},
+		{Tool: &updateTool{svc: svc}, Safety: logicissue.UpdateSafety},
+		{Tool: &transitionsListTool{svc: svc}, Safety: logicissue.ListTransitionsSafety},
+		{Tool: &transitionExecuteTool{svc: svc}, Safety: logicissue.ExecuteTransitionSafety},
+		{Tool: &commentsListTool{svc: svc}, Safety: logicissue.ListCommentsSafety},
+		{Tool: &commentAddTool{svc: svc}, Safety: logicissue.AddCommentSafety},
+		{Tool: &linksListTool{svc: svc}, Safety: logicissue.ListLinksSafety},
+		{Tool: &linkAddTool{svc: svc}, Safety: logicissue.LinkIssuesSafety},
+		{Tool: &changelogGetTool{svc: svc}, Safety: logicissue.GetChangelogSafety},
+		{Tool: &moveTool{svc: svc}, Safety: logicissue.MoveSafety},
+		{Tool: &suggestTool{svc: svc}, Safety: logicissue.SuggestSafety},
+		{Tool: &searchReleaseTool{svc: svc}, Safety: logicissue.SearchReleaseSafety},
+		{Tool: &checklistAddTool{svc: svc}, Safety: logicissue.ChecklistAddSafety},
+		{Tool: &checklistListTool{svc: svc}, Safety: logicissue.ChecklistListSafety},
+		{Tool: &checklistEditTool{svc: svc}, Safety: logicissue.ChecklistEditSafety},
+		{Tool: &checklistDeleteTool{svc: svc}, Safety: logicissue.ChecklistDeleteSafety},
+		{Tool: &checklistItemDeleteTool{svc: svc}, Safety: logicissue.ChecklistItemDeleteSafety},
+		{Tool: &commentGetTool{svc: svc}, Safety: logicissue.CommentGetSafety},
+		{Tool: &commentEditTool{svc: svc}, Safety: logicissue.CommentEditSafety},
+		{Tool: &commentDeleteTool{svc: svc}, Safety: logicissue.CommentDeleteSafety},
+		{Tool: &commentReactionAddTool{svc: svc}, Safety: logicissue.CommentReactionAddSafety},
+		{Tool: &linksListPaginateTool{svc: svc}, Safety: logicissue.LinksListPaginateSafety},
+		{Tool: &linkDeleteTool{svc: svc}, Safety: logicissue.LinkDeleteSafety},
+		{Tool: &attachmentListTool{svc: svc}, Safety: logicissue.AttachmentListSafety},
+		{Tool: &attachmentGetTool{svc: svc}, Safety: logicissue.AttachmentGetSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

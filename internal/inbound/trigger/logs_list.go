@@ -14,6 +14,7 @@ type logsListTool struct{ svc *logictrigger.Service }
 func (t *logsListTool) Description() mcp.Tool {
 	return mcp.NewTool("trigger_logs_list",
 		mcp.WithDescription("View the webhook invocation log of a Yandex Tracker trigger."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("trigger_id", mcp.Required(), mcp.Description("Trigger id")),
 		mcp.WithString("issue_id", mcp.Description("Filter by issue id")),

@@ -14,6 +14,7 @@ type createTool struct{ svc *logicversion.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("version_create",
 		mcp.WithDescription("Create a new version on a Yandex Tracker queue."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Version definition, e.g. {\"queue\": \"TEST\", \"name\": \"1.0\", \"description\": \"...\", \"startDate\": \"2026-01-01\", \"dueDate\": \"2026-06-01\"}")),
 	)
 }

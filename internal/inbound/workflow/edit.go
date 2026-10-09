@@ -14,6 +14,7 @@ type editTool struct{ svc *logicworkflow.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("workflow_edit",
 		mcp.WithDescription("Edit a Yandex Tracker workflow."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Workflow id")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Workflow's current version (for optimistic locking)")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Parameters to set, e.g. {\"name\": \"...\", \"steps\": [...], \"initialAction\": {...}}")),

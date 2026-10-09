@@ -3,7 +3,11 @@ package queue
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const LocalFieldCreateSafety = safety.Write
 
 // LocalFieldCreate creates a queue-local issue field.
 func (s *Service) LocalFieldCreate(ctx context.Context, queueKey string, fields map[string]any) (json.RawMessage, error) {

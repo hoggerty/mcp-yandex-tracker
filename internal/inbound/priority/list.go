@@ -14,6 +14,7 @@ type listTool struct{ svc *logicpriority.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("priority_list",
 		mcp.WithDescription("List the issue priorities available in the Yandex Tracker organization."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithBoolean("localized", mcp.Description("If false, return names in all supported languages; default true")),
 	)
 }

@@ -14,6 +14,7 @@ type queueListTool struct{ svc *logicworkflow.Service }
 func (t *queueListTool) Description() mcp.Tool {
 	return mcp.NewTool("workflow_queue_list",
 		mcp.WithDescription("Get the workflow assigned to each issue type in a queue."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 	)
 }

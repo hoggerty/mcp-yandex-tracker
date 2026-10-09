@@ -14,6 +14,7 @@ type linksListTool struct{ svc *logicissue.Service }
 func (t *linksListTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_links_list",
 		mcp.WithDescription("List links (relates to, blocks, is blocked by, etc.) for an issue."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 	)
 }

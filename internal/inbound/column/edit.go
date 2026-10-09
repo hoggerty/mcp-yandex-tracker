@@ -14,6 +14,7 @@ type editTool struct{ svc *logiccolumn.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("column_edit",
 		mcp.WithDescription("Edit a column of a Yandex Tracker agile board."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("board_id", mcp.Required(), mcp.Description("Board id")),
 		mcp.WithString("column_id", mcp.Required(), mcp.Description("Column id")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Board's current version (for optimistic locking)")),

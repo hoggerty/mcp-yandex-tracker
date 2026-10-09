@@ -2,22 +2,14 @@
 package status
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicstatus "github.com/hoggerty/yandex-tracker-mcp/internal/logic/status"
 )
 
-func Tools(svc *logicstatus.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&listTool{svc: svc},
-		&createTool{svc: svc},
-		&editTool{svc: svc},
+func Tools(svc *logicstatus.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &listTool{svc: svc}, Safety: logicstatus.ListSafety},
+		{Tool: &createTool{svc: svc}, Safety: logicstatus.CreateSafety},
+		{Tool: &editTool{svc: svc}, Safety: logicstatus.EditSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

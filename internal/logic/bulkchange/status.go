@@ -3,7 +3,11 @@ package bulkchange
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const StatusSafety = safety.ReadOnly
 
 // Status retrieves the status of a background bulk-change operation.
 func (s *Service) Status(ctx context.Context, id string) (json.RawMessage, error) {

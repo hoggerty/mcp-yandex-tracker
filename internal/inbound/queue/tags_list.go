@@ -14,6 +14,7 @@ type tagsListTool struct{ svc *logicqueue.Service }
 func (t *tagsListTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_tags_list",
 		mcp.WithDescription("Get the tags defined on a Yandex Tracker queue."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 	)
 }

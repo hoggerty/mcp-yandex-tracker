@@ -14,6 +14,7 @@ type commentTool struct{ svc *logicimportdata.Service }
 func (t *commentTool) Description() mcp.Tool {
 	return mcp.NewTool("import_comment",
 		mcp.WithDescription("Add a comment to an issue preserving historical metadata. Administrator only."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_id", mcp.Required(), mcp.Description("Issue id or key")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("e.g. {\"text\": \"...\", \"createdAt\": \"2017-08-29T12:34:41.740+0000\", \"createdBy\": 11234567, \"updatedAt\": \"...\", \"updatedBy\": 11234567}; text, createdAt, createdBy are required")),
 	)

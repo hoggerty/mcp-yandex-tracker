@@ -14,6 +14,7 @@ type categoryCreateTool struct{ svc *logicfield.Service }
 func (t *categoryCreateTool) Description() mcp.Tool {
 	return mcp.NewTool("field_category_create",
 		mcp.WithDescription("Create a new category for grouping global issue fields."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Category definition, e.g. {\"name\": {\"en\": \"...\", \"ru\": \"...\"}, \"order\": 400}")),
 	)
 }

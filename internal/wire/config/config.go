@@ -12,6 +12,7 @@ import (
 
 type Config struct {
 	TrackerClient TrackerClientConfig
+	Tools         ToolsConfig
 }
 
 // Load reads Config from environment variables, without validating it.

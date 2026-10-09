@@ -14,6 +14,7 @@ type listTool struct{ svc *logiccolumn.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("column_list",
 		mcp.WithDescription("List the columns of a Yandex Tracker agile board."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("board_id", mcp.Required(), mcp.Description("Board id")),
 	)
 }

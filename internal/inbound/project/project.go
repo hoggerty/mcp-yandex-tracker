@@ -2,25 +2,17 @@
 package project
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicproject "github.com/hoggerty/yandex-tracker-mcp/internal/logic/project"
 )
 
-func Tools(svc *logicproject.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&createTool{svc: svc},
-		&getTool{svc: svc},
-		&listTool{svc: svc},
-		&queuesListTool{svc: svc},
-		&updateTool{svc: svc},
-		&deleteTool{svc: svc},
+func Tools(svc *logicproject.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &createTool{svc: svc}, Safety: logicproject.CreateSafety},
+		{Tool: &getTool{svc: svc}, Safety: logicproject.GetSafety},
+		{Tool: &listTool{svc: svc}, Safety: logicproject.ListSafety},
+		{Tool: &queuesListTool{svc: svc}, Safety: logicproject.QueuesListSafety},
+		{Tool: &updateTool{svc: svc}, Safety: logicproject.UpdateSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicproject.DeleteSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

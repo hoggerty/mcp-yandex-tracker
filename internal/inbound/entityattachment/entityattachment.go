@@ -2,22 +2,14 @@
 package entityattachment
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicentityattachment "github.com/hoggerty/yandex-tracker-mcp/internal/logic/entityattachment"
 )
 
-func Tools(svc *logicentityattachment.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&listTool{svc: svc},
-		&getTool{svc: svc},
-		&deleteTool{svc: svc},
+func Tools(svc *logicentityattachment.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &listTool{svc: svc}, Safety: logicentityattachment.ListSafety},
+		{Tool: &getTool{svc: svc}, Safety: logicentityattachment.GetSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicentityattachment.DeleteSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

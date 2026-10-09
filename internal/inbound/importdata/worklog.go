@@ -14,6 +14,7 @@ type worklogTool struct{ svc *logicimportdata.Service }
 func (t *worklogTool) Description() mcp.Tool {
 	return mcp.NewTool("import_worklog",
 		mcp.WithDescription("Add a worklog entry to an issue preserving historical metadata. Administrator only."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_id", mcp.Required(), mcp.Description("Issue id or key")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("e.g. {\"duration\": \"PT1H\", \"createdAt\": \"...\", \"createdBy\": \"login\", \"start\": \"...\", \"comment\": \"...\"}")),
 	)

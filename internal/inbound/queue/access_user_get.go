@@ -14,6 +14,7 @@ type accessUserGetTool struct{ svc *logicqueue.Service }
 func (t *accessUserGetTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_access_user_get",
 		mcp.WithDescription("Get a user's permissions for a Yandex Tracker queue."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("user_id", mcp.Required(), mcp.Description("User id or login")),
 	)

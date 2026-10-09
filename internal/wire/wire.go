@@ -20,6 +20,9 @@ func NewServer(version string) (*server.MCPServer, error) {
 	if err := cfg.TrackerClient.Validate(); err != nil {
 		return nil, err
 	}
+	if err := cfg.Tools.Validate(); err != nil {
+		return nil, err
+	}
 
 	client := trackerapi.New(trackerapi.Config{
 		Token:      cfg.TrackerClient.Token,
@@ -30,6 +33,7 @@ func NewServer(version string) (*server.MCPServer, error) {
 	svcs := logic.New(client)
 
 	s := server.NewMCPServer("yandex-tracker-mcp", version)
-	inbound.RegisterTools(s, svcs)
+	policy := inbound.Policy{Mode: cfg.Tools.Mode, DisabledTools: cfg.Tools.DisabledTools}
+	inbound.RegisterTools(s, svcs, policy)
 	return s, nil
 }

@@ -2,26 +2,18 @@
 package entity
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicentity "github.com/hoggerty/yandex-tracker-mcp/internal/logic/entity"
 )
 
-func Tools(svc *logicentity.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&createTool{svc: svc},
-		&getTool{svc: svc},
-		&updateTool{svc: svc},
-		&deleteTool{svc: svc},
-		&searchTool{svc: svc},
-		&bulkUpdateTool{svc: svc},
-		&eventsListTool{svc: svc},
+func Tools(svc *logicentity.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &createTool{svc: svc}, Safety: logicentity.CreateSafety},
+		{Tool: &getTool{svc: svc}, Safety: logicentity.GetSafety},
+		{Tool: &updateTool{svc: svc}, Safety: logicentity.UpdateSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicentity.DeleteSafety},
+		{Tool: &searchTool{svc: svc}, Safety: logicentity.SearchSafety},
+		{Tool: &bulkUpdateTool{svc: svc}, Safety: logicentity.BulkUpdateSafety},
+		{Tool: &eventsListTool{svc: svc}, Safety: logicentity.EventsListSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

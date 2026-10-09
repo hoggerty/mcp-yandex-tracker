@@ -3,7 +3,11 @@ package autoaction
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const GetSafety = safety.ReadOnly
 
 // Get retrieves the parameters of an auto action.
 func (s *Service) Get(ctx context.Context, queueKey, autoActionID string) (json.RawMessage, error) {

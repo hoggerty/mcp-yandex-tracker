@@ -2,24 +2,16 @@
 package worklog
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicworklog "github.com/hoggerty/yandex-tracker-mcp/internal/logic/worklog"
 )
 
-func Tools(svc *logicworklog.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&addTool{svc: svc},
-		&editTool{svc: svc},
-		&deleteTool{svc: svc},
-		&listTool{svc: svc},
-		&searchTool{svc: svc},
+func Tools(svc *logicworklog.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &addTool{svc: svc}, Safety: logicworklog.AddSafety},
+		{Tool: &editTool{svc: svc}, Safety: logicworklog.EditSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicworklog.DeleteSafety},
+		{Tool: &listTool{svc: svc}, Safety: logicworklog.ListSafety},
+		{Tool: &searchTool{svc: svc}, Safety: logicworklog.SearchSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

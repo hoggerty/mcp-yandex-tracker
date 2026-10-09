@@ -14,6 +14,7 @@ type updateTool struct{ svc *logicentity.Service }
 func (t *updateTool) Description() mcp.Tool {
 	return mcp.NewTool("entity_update",
 		mcp.WithDescription("Edit a Yandex Tracker entity (project, portfolio, or goal)."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithObject("body", mcp.Required(), mcp.Description("e.g. {\"fields\": {\"summary\": \"...\", \"description\": \"...\"}, \"comment\": \"...\", \"links\": [...]}")),

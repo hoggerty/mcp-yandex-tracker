@@ -2,23 +2,15 @@
 package entityaccess
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicentityaccess "github.com/hoggerty/yandex-tracker-mcp/internal/logic/entityaccess"
 )
 
-func Tools(svc *logicentityaccess.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&accessGetTool{svc: svc},
-		&permissionsGetTool{svc: svc},
-		&accessEditTool{svc: svc},
-		&permissionsEditTool{svc: svc},
+func Tools(svc *logicentityaccess.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &accessGetTool{svc: svc}, Safety: logicentityaccess.AccessGetSafety},
+		{Tool: &permissionsGetTool{svc: svc}, Safety: logicentityaccess.PermissionsGetSafety},
+		{Tool: &accessEditTool{svc: svc}, Safety: logicentityaccess.AccessEditSafety},
+		{Tool: &permissionsEditTool{svc: svc}, Safety: logicentityaccess.PermissionsEditSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

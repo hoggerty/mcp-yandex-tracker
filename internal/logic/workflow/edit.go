@@ -3,7 +3,11 @@ package workflow
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const EditSafety = safety.Write
 
 // Edit edits a workflow; version must match the workflow's current version.
 func (s *Service) Edit(ctx context.Context, id string, version int, fields map[string]any) (json.RawMessage, error) {

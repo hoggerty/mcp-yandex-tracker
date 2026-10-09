@@ -3,7 +3,11 @@ package queue
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const TagDeleteSafety = safety.Destructive
 
 // TagDelete removes a tag from a queue. Admin-only; the tag must be unused by any issue.
 func (s *Service) TagDelete(ctx context.Context, queueKey, tag string) (json.RawMessage, error) {
