@@ -14,6 +14,7 @@ type currentTool struct{ svc *logicuser.Service }
 func (t *currentTool) Description() mcp.Tool {
 	return mcp.NewTool("user_current",
 		mcp.WithDescription("Retrieve the Yandex Tracker profile of the user that owns the configured API token."),
+		mcp.WithReadOnlyHintAnnotation(true),
 	)
 }
 

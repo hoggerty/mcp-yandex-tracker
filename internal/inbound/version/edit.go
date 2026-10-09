@@ -14,6 +14,7 @@ type editTool struct{ svc *logicversion.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("version_edit",
 		mcp.WithDescription("Edit a Yandex Tracker version."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Version id")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Parameters to set, e.g. {\"name\": \"...\", \"description\": \"...\", \"startDate\": \"2026-01-01\", \"dueDate\": \"2026-06-01\"}")),
 	)

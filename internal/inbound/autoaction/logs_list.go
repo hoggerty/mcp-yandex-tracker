@@ -14,6 +14,7 @@ type logsListTool struct{ svc *logicautoaction.Service }
 func (t *logsListTool) Description() mcp.Tool {
 	return mcp.NewTool("autoaction_logs_list",
 		mcp.WithDescription("List the run history of a Yandex Tracker auto action."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("autoaction_id", mcp.Required(), mcp.Description("Auto action id")),
 	)

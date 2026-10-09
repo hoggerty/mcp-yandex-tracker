@@ -14,6 +14,7 @@ type statusTool struct{ svc *logicbulkchange.Service }
 func (t *statusTool) Description() mcp.Tool {
 	return mcp.NewTool("bulkchange_status",
 		mcp.WithDescription("Get the status of a background bulk-change operation."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Bulk-change operation id")),
 	)
 }

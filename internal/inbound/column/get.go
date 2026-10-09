@@ -14,6 +14,7 @@ type getTool struct{ svc *logiccolumn.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("column_get",
 		mcp.WithDescription("Get a single column of a Yandex Tracker agile board."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("board_id", mcp.Required(), mcp.Description("Board id")),
 		mcp.WithString("column_id", mcp.Required(), mcp.Description("Column id")),
 	)

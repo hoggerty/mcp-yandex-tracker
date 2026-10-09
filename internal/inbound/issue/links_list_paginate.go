@@ -14,6 +14,7 @@ type linksListPaginateTool struct{ svc *logicissue.Service }
 func (t *linksListPaginateTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_links_list_paginate",
 		mcp.WithDescription("List a Yandex Tracker issue's links a page at a time, optionally filtered by link type."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithNumber("per_page", mcp.Description("Links per page")),
 		mcp.WithNumber("page", mcp.Description("Page number, starting at 1")),

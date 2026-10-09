@@ -14,6 +14,7 @@ type editTool struct{ svc *logicmacro.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("macro_edit",
 		mcp.WithDescription("Edit a Yandex Tracker macro."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("macro_id", mcp.Required(), mcp.Description("Macro id")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Parameters to set, e.g. {\"name\": \"...\", \"body\": \"...\", \"issueUpdate\": {...}}")),

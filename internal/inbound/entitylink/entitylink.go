@@ -2,22 +2,14 @@
 package entitylink
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicentitylink "github.com/hoggerty/yandex-tracker-mcp/internal/logic/entitylink"
 )
 
-func Tools(svc *logicentitylink.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&addTool{svc: svc},
-		&listTool{svc: svc},
-		&deleteTool{svc: svc},
+func Tools(svc *logicentitylink.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &addTool{svc: svc}, Safety: logicentitylink.AddSafety},
+		{Tool: &listTool{svc: svc}, Safety: logicentitylink.ListSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicentitylink.DeleteSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

@@ -14,6 +14,7 @@ type createTool struct{ svc *logiccomponent.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("component_create",
 		mcp.WithDescription("Create a new component on a Yandex Tracker queue."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Component definition, e.g. {\"name\": \"...\", \"queue\": \"TEST\", \"description\": \"...\", \"lead\": \"login\", \"assignAuto\": false}")),
 	)
 }

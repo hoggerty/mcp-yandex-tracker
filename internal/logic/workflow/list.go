@@ -3,7 +3,11 @@ package workflow
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const ListSafety = safety.ReadOnly
 
 // List lists all workflows in the organization.
 func (s *Service) List(ctx context.Context) (json.RawMessage, error) {

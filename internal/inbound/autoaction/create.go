@@ -14,6 +14,7 @@ type createTool struct{ svc *logicautoaction.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("autoaction_create",
 		mcp.WithDescription("Create a new auto action on a Yandex Tracker queue."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Auto action definition, e.g. {\"name\": \"...\", \"filter\": {...}, \"actions\": [...], \"active\": true, \"intervalMillis\": 3600000}")),
 	)

@@ -14,6 +14,7 @@ type updateTool struct{ svc *logicproject.Service }
 func (t *updateTool) Description() mcp.Tool {
 	return mcp.NewTool("project_update",
 		mcp.WithDescription("Replace a Yandex Tracker project's fields."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Project id")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Current project version, for optimistic locking")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("e.g. {\"name\": \"...\", \"queues\": \"QUEUE_KEY\", \"description\": \"...\", \"lead\": \"login\", \"status\": \"DRAFT|IN_PROGRESS|LAUNCHED|POSTPONED\", \"startDate\": \"YYYY-MM-DD\", \"endDate\": \"YYYY-MM-DD\"}")),

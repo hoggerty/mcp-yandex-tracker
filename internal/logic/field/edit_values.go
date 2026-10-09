@@ -3,7 +3,11 @@ package field
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const EditValuesSafety = safety.Write
 
 // EditValues edits a global field's non-name parameters (category, order, description,
 // visibility, possible values); version must match the field's current version.

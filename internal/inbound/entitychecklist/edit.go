@@ -14,6 +14,7 @@ type editTool struct{ svc *logicentitychecklist.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("entitychecklist_edit",
 		mcp.WithDescription("Replace the full checklist on a Yandex Tracker entity with the given items (bulk edit)."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithArray("items", mcp.Required(), mcp.Description("Array of checklist item objects, e.g. [{\"text\": \"...\", \"checked\": false}]")),

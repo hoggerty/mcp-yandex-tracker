@@ -3,7 +3,11 @@ package project
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const DeleteSafety = safety.Destructive
 
 func (s *Service) Delete(ctx context.Context, id string) (json.RawMessage, error) {
 	return s.client.DeleteProject(ctx, id)

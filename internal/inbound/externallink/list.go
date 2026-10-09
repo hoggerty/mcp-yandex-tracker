@@ -14,6 +14,7 @@ type listTool struct{ svc *logicexternallink.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("externallink_list",
 		mcp.WithDescription("List a Yandex Tracker issue's links to objects in external applications."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 	)
 }

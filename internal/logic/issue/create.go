@@ -3,7 +3,11 @@ package issue
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const CreateSafety = safety.Write
 
 // Create makes a new issue, merging queue/summary/description with any extra raw fields.
 func (s *Service) Create(ctx context.Context, queue, summary, description string, extra map[string]any) (json.RawMessage, error) {

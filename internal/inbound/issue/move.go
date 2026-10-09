@@ -14,6 +14,7 @@ type moveTool struct{ svc *logicissue.Service }
 func (t *moveTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_move",
 		mcp.WithDescription("Move a Yandex Tracker issue to another queue."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Destination queue key")),
 		mcp.WithBoolean("notify", mcp.Description("Notify issue participants (default true)")),

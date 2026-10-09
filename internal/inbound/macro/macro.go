@@ -2,24 +2,16 @@
 package macro
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicmacro "github.com/hoggerty/yandex-tracker-mcp/internal/logic/macro"
 )
 
-func Tools(svc *logicmacro.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&listTool{svc: svc},
-		&getTool{svc: svc},
-		&createTool{svc: svc},
-		&editTool{svc: svc},
-		&deleteTool{svc: svc},
+func Tools(svc *logicmacro.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &listTool{svc: svc}, Safety: logicmacro.ListSafety},
+		{Tool: &getTool{svc: svc}, Safety: logicmacro.GetSafety},
+		{Tool: &createTool{svc: svc}, Safety: logicmacro.CreateSafety},
+		{Tool: &editTool{svc: svc}, Safety: logicmacro.EditSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicmacro.DeleteSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

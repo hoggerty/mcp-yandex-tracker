@@ -3,7 +3,11 @@ package issue
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const MoveSafety = safety.Write
 
 // Move moves an issue to another queue.
 func (s *Service) Move(ctx context.Context, issueKey, targetQueue string, notify, notifyAuthor, moveAllFields, initialStatus bool, fields map[string]any) (json.RawMessage, error) {

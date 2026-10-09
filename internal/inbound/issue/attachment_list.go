@@ -14,6 +14,7 @@ type attachmentListTool struct{ svc *logicissue.Service }
 func (t *attachmentListTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_attachment_list",
 		mcp.WithDescription("List the files attached to a Yandex Tracker issue."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 	)
 }

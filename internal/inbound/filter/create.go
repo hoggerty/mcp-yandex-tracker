@@ -14,6 +14,7 @@ type createTool struct{ svc *logicfilter.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("filter_create",
 		mcp.WithDescription("Create a new saved issue filter."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Filter definition, e.g. {\"name\": \"My Open Issues\", \"filter\": {\"assignee\": \"me()\", \"status\": \"open\"}}")),
 	)
 }

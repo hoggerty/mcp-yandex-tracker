@@ -14,6 +14,7 @@ type editTool struct{ svc *logicsprint.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("sprint_edit",
 		mcp.WithDescription("Edit a Yandex Tracker sprint."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Sprint id")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Sprint's current version (for optimistic locking)")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Parameters to set, e.g. {\"name\": \"...\", \"startDate\": \"2024-01-01\", \"endDate\": \"2024-01-14\"}")),

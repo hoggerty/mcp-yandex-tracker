@@ -14,6 +14,7 @@ type editTool struct{ svc *logicstatus.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("status_edit",
 		mcp.WithDescription("Edit an issue status (requires Administrator rights)."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Status id or key")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Status's current version (for optimistic locking)")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Parameters to set, e.g. {\"name\": {\"ru\": \"...\", \"en\": \"...\"}, \"order\": 350, \"type\": \"paused\"}")),

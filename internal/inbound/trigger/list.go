@@ -14,6 +14,7 @@ type listTool struct{ svc *logictrigger.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("trigger_list",
 		mcp.WithDescription("List the triggers configured on a Yandex Tracker queue."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithNumber("per_page", mcp.Description("Results per page")),
 		mcp.WithString("last_id", mcp.Description("Last trigger id from the previous page, for pagination")),

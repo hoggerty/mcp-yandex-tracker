@@ -14,6 +14,7 @@ type createTool struct{ svc *logicpriority.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("priority_create",
 		mcp.WithDescription("Create a new issue priority (requires Administrator rights)."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Priority definition, e.g. {\"key\": \"one\", \"name\": {\"ru\": \"...\", \"en\": \"...\"}, \"order\": 60, \"description\": \"...\"}")),
 	)
 }

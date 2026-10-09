@@ -14,6 +14,7 @@ type createTool struct{ svc *logicissue.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_create",
 		mcp.WithDescription("Create a new Yandex Tracker issue."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key the issue should be created in, e.g. QUEUE")),
 		mcp.WithString("summary", mcp.Required(), mcp.Description("Issue title")),
 		mcp.WithString("description", mcp.Description("Issue description")),

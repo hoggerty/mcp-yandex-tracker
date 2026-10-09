@@ -14,6 +14,7 @@ type transitionExecuteTool struct{ svc *logicissue.Service }
 func (t *transitionExecuteTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_transition_execute",
 		mcp.WithDescription("Execute a workflow transition on an issue, moving it to a new status."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("transition_id", mcp.Required(), mcp.Description("Transition ID, as returned by issue_transitions_list")),
 		mcp.WithObject("fields", mcp.Description("Optional fields required by the transition's screen (e.g. resolution)")),

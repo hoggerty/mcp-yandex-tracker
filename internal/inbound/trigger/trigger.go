@@ -2,24 +2,16 @@
 package trigger
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logictrigger "github.com/hoggerty/yandex-tracker-mcp/internal/logic/trigger"
 )
 
-func Tools(svc *logictrigger.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&createTool{svc: svc},
-		&listTool{svc: svc},
-		&getTool{svc: svc},
-		&editTool{svc: svc},
-		&logsListTool{svc: svc},
+func Tools(svc *logictrigger.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &createTool{svc: svc}, Safety: logictrigger.CreateSafety},
+		{Tool: &listTool{svc: svc}, Safety: logictrigger.ListSafety},
+		{Tool: &getTool{svc: svc}, Safety: logictrigger.GetSafety},
+		{Tool: &editTool{svc: svc}, Safety: logictrigger.EditSafety},
+		{Tool: &logsListTool{svc: svc}, Safety: logictrigger.LogsListSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

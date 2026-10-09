@@ -14,6 +14,7 @@ type editNameTool struct{ svc *logicfield.Service }
 func (t *editNameTool) Description() mcp.Tool {
 	return mcp.NewTool("field_edit_name",
 		mcp.WithDescription("Rename a global issue field."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Field id/key")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Field's current version (for optimistic locking)")),
 		mcp.WithObject("name", mcp.Required(), mcp.Description("New localized name, e.g. {\"en\": \"...\", \"ru\": \"...\"}")),

@@ -14,6 +14,7 @@ type localFieldsListTool struct{ svc *logicqueue.Service }
 func (t *localFieldsListTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_local_fields_list",
 		mcp.WithDescription("List a Yandex Tracker queue's local fields."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 	)
 }

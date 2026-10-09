@@ -14,6 +14,7 @@ type createTool struct{ svc *logicqueue.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_create",
 		mcp.WithDescription("Create a new Yandex Tracker queue."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Queue definition, e.g. {\"key\": \"DESIGN\", \"name\": \"Design\", \"lead\": \"username\", \"defaultType\": \"task\", \"defaultPriority\": \"normal\", \"issueTypesConfig\": [{\"issueType\": \"task\", \"workflow\": \"hrPresetWorkflow\", \"resolutions\": [\"fixed\"]}]}")),
 	)
 }

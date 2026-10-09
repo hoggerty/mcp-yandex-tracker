@@ -14,6 +14,7 @@ type editTool struct{ svc *logicworklog.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("worklog_edit",
 		mcp.WithDescription("Change the duration and/or comment of an existing worklog record."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("worklog_id", mcp.Required(), mcp.Description("Worklog record id")),
 		mcp.WithString("duration", mcp.Required(), mcp.Description("Time spent, ISO 8601 duration, e.g. P1DT4H")),

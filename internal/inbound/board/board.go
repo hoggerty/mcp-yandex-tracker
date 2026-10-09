@@ -2,25 +2,17 @@
 package board
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicboard "github.com/hoggerty/yandex-tracker-mcp/internal/logic/board"
 )
 
-func Tools(svc *logicboard.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&listTool{svc: svc},
-		&sprintsListTool{svc: svc},
-		&getTool{svc: svc},
-		&createTool{svc: svc},
-		&editTool{svc: svc},
-		&deleteTool{svc: svc},
+func Tools(svc *logicboard.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &listTool{svc: svc}, Safety: logicboard.ListSafety},
+		{Tool: &sprintsListTool{svc: svc}, Safety: logicboard.ListSprintsSafety},
+		{Tool: &getTool{svc: svc}, Safety: logicboard.GetSafety},
+		{Tool: &createTool{svc: svc}, Safety: logicboard.CreateSafety},
+		{Tool: &editTool{svc: svc}, Safety: logicboard.EditSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicboard.DeleteSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

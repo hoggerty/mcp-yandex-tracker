@@ -14,6 +14,7 @@ type createTool struct{ svc *logicentity.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("entity_create",
 		mcp.WithDescription("Create a new Yandex Tracker entity (project, portfolio, or goal)."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Entity definition, e.g. {\"fields\": {\"summary\": \"...\", \"teamAccess\": true}, \"links\": [{\"relationship\": \"works towards\", \"entity\": \"ENTITY_ID\"}]}")),
 	)

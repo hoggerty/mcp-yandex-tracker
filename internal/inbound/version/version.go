@@ -2,24 +2,16 @@
 package version
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicversion "github.com/hoggerty/yandex-tracker-mcp/internal/logic/version"
 )
 
-func Tools(svc *logicversion.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&createTool{svc: svc},
-		&queueListTool{svc: svc},
-		&getTool{svc: svc},
-		&editTool{svc: svc},
-		&deleteTool{svc: svc},
+func Tools(svc *logicversion.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &createTool{svc: svc}, Safety: logicversion.CreateSafety},
+		{Tool: &queueListTool{svc: svc}, Safety: logicversion.QueueListSafety},
+		{Tool: &getTool{svc: svc}, Safety: logicversion.GetSafety},
+		{Tool: &editTool{svc: svc}, Safety: logicversion.EditSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicversion.DeleteSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

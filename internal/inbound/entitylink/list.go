@@ -14,6 +14,7 @@ type listTool struct{ svc *logicentitylink.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("entitylink_list",
 		mcp.WithDescription("List links on a Yandex Tracker entity."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithString("fields", mcp.Description("Optional comma-separated additional fields to include")),

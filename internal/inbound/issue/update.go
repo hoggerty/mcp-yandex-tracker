@@ -14,6 +14,7 @@ type updateTool struct{ svc *logicissue.Service }
 func (t *updateTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_update",
 		mcp.WithDescription("Update fields on an existing Yandex Tracker issue."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Fields to update, e.g. {\"summary\": \"new title\", \"priority\": {\"id\": \"2\"}}")),
 	)

@@ -14,6 +14,7 @@ type getTool struct{ svc *logicautoaction.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("autoaction_get",
 		mcp.WithDescription("Get the parameters of a Yandex Tracker auto action."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("autoaction_id", mcp.Required(), mcp.Description("Auto action id")),
 	)

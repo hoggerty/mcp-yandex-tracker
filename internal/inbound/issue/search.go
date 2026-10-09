@@ -14,6 +14,7 @@ type searchTool struct{ svc *logicissue.Service }
 func (t *searchTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_search",
 		mcp.WithDescription("Search Yandex Tracker issues using either a query-language string or a structured filter. At least one of query/filter must be set."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("query", mcp.Description("Tracker query language expression, e.g. \"Queue: QUEUE AND Status: Open\"")),
 		mcp.WithObject("filter", mcp.Description("Structured filter, e.g. {\"queue\": \"QUEUE\", \"status\": \"open\"}")),
 		mcp.WithString("order_by", mcp.Description("Sort order, e.g. \"+updated\" or \"-created\"")),

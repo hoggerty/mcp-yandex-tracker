@@ -14,6 +14,7 @@ type permissionsEditTool struct{ svc *logicentityaccess.Service }
 func (t *permissionsEditTool) Description() mcp.Tool {
 	return mcp.NewTool("entityaccess_permissions_edit",
 		mcp.WithDescription("Grant or revoke plain permissions (users/groups/roles) on a Yandex Tracker entity."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithObject("body", mcp.Required(), mcp.Description("e.g. {\"grant\": [{\"type\": \"user\", \"id\": \"...\"}], \"revoke\": [...]}")),

@@ -14,6 +14,7 @@ type countTool struct{ svc *logicissue.Service }
 func (t *countTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_count",
 		mcp.WithDescription("Count Yandex Tracker issues matching a query or filter."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("query", mcp.Description("Tracker query language expression")),
 		mcp.WithObject("filter", mcp.Description("Structured filter object")),
 	)

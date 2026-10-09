@@ -14,6 +14,7 @@ type getTool struct{ svc *logicsprint.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("sprint_get",
 		mcp.WithDescription("Get a Yandex Tracker sprint by id."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Sprint id")),
 	)
 }

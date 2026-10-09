@@ -2,22 +2,14 @@
 package gap
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicgap "github.com/hoggerty/yandex-tracker-mcp/internal/logic/gap"
 )
 
-func Tools(svc *logicgap.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&createTool{svc: svc},
-		&searchTool{svc: svc},
-		&deleteTool{svc: svc},
+func Tools(svc *logicgap.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &createTool{svc: svc}, Safety: logicgap.CreateSafety},
+		{Tool: &searchTool{svc: svc}, Safety: logicgap.SearchSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicgap.DeleteSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

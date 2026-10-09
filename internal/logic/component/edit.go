@@ -3,7 +3,11 @@ package component
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const EditSafety = safety.Write
 
 // Edit edits a component; version must match the component's current version.
 func (s *Service) Edit(ctx context.Context, id string, version int, fields map[string]any) (json.RawMessage, error) {

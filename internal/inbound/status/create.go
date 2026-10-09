@@ -14,6 +14,7 @@ type createTool struct{ svc *logicstatus.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("status_create",
 		mcp.WithDescription("Create a new issue status (requires Administrator rights)."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Status definition, e.g. {\"key\": \"myStatus\", \"name\": {\"ru\": \"...\", \"en\": \"...\"}, \"type\": \"paused\"}")),
 	)
 }

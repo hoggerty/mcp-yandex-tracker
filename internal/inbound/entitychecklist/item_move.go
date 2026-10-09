@@ -14,6 +14,7 @@ type itemMoveTool struct{ svc *logicentitychecklist.Service }
 func (t *itemMoveTool) Description() mcp.Tool {
 	return mcp.NewTool("entitychecklist_item_move",
 		mcp.WithDescription("Move a checklist item to a new position on a Yandex Tracker entity."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithString("item_id", mcp.Required(), mcp.Description("Checklist item id to move")),

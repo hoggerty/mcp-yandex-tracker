@@ -2,23 +2,15 @@
 package externallink
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicexternallink "github.com/hoggerty/yandex-tracker-mcp/internal/logic/externallink"
 )
 
-func Tools(svc *logicexternallink.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&applicationsListTool{svc: svc},
-		&listTool{svc: svc},
-		&addTool{svc: svc},
-		&deleteTool{svc: svc},
+func Tools(svc *logicexternallink.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &applicationsListTool{svc: svc}, Safety: logicexternallink.ApplicationsListSafety},
+		{Tool: &listTool{svc: svc}, Safety: logicexternallink.ListSafety},
+		{Tool: &addTool{svc: svc}, Safety: logicexternallink.AddSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicexternallink.DeleteSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

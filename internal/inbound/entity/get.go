@@ -14,6 +14,7 @@ type getTool struct{ svc *logicentity.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("entity_get",
 		mcp.WithDescription("Get a Yandex Tracker entity (project, portfolio, or goal) by id."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithString("expand", mcp.Description("Optional: \"attachments\"")),

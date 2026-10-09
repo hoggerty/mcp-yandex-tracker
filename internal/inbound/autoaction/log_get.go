@@ -14,6 +14,7 @@ type logGetTool struct{ svc *logicautoaction.Service }
 func (t *logGetTool) Description() mcp.Tool {
 	return mcp.NewTool("autoaction_log_get",
 		mcp.WithDescription("Get a single auto action run, including the issues it touched."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("autoaction_id", mcp.Required(), mcp.Description("Auto action id")),
 		mcp.WithString("run_id", mcp.Required(), mcp.Description("Auto action run id")),

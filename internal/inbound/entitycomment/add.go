@@ -14,6 +14,7 @@ type addTool struct{ svc *logicentitycomment.Service }
 func (t *addTool) Description() mcp.Tool {
 	return mcp.NewTool("entitycomment_add",
 		mcp.WithDescription("Add a comment to a Yandex Tracker entity (project, portfolio, or goal)."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("e.g. {\"text\": \"...\", \"summonees\": [\"login\"]}")),

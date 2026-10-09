@@ -2,22 +2,14 @@
 package priority
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicpriority "github.com/hoggerty/yandex-tracker-mcp/internal/logic/priority"
 )
 
-func Tools(svc *logicpriority.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&listTool{svc: svc},
-		&createTool{svc: svc},
-		&editTool{svc: svc},
+func Tools(svc *logicpriority.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &listTool{svc: svc}, Safety: logicpriority.ListSafety},
+		{Tool: &createTool{svc: svc}, Safety: logicpriority.CreateSafety},
+		{Tool: &editTool{svc: svc}, Safety: logicpriority.EditSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

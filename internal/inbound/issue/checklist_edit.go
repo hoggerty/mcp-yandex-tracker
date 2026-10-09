@@ -14,6 +14,7 @@ type checklistEditTool struct{ svc *logicissue.Service }
 func (t *checklistEditTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_checklist_edit",
 		mcp.WithDescription("Bulk-edit items of a Yandex Tracker issue's checklist; each item must include its id."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithArray("items", mcp.Required(), mcp.Description("Checklist items to update, each an object with at least an \"id\" field")),
 	)

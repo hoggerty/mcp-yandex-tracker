@@ -16,6 +16,7 @@ type getTool struct {
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("entityattachment_get",
 		mcp.WithDescription("Get a single attachment's metadata on a Yandex Tracker entity."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithString("file_id", mcp.Required(), mcp.Description("Attachment file id")),

@@ -3,7 +3,11 @@ package column
 import (
 	"context"
 	"encoding/json"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
+
+const ListSafety = safety.ReadOnly
 
 // List lists the columns of an agile board.
 func (s *Service) List(ctx context.Context, boardID string) (json.RawMessage, error) {

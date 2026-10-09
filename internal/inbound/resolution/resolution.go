@@ -2,22 +2,14 @@
 package resolution
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicresolution "github.com/hoggerty/yandex-tracker-mcp/internal/logic/resolution"
 )
 
-func Tools(svc *logicresolution.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&listTool{svc: svc},
-		&createTool{svc: svc},
-		&editTool{svc: svc},
+func Tools(svc *logicresolution.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &listTool{svc: svc}, Safety: logicresolution.ListSafety},
+		{Tool: &createTool{svc: svc}, Safety: logicresolution.CreateSafety},
+		{Tool: &editTool{svc: svc}, Safety: logicresolution.EditSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

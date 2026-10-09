@@ -2,26 +2,18 @@
 package workflow
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicworkflow "github.com/hoggerty/yandex-tracker-mcp/internal/logic/workflow"
 )
 
-func Tools(svc *logicworkflow.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&createTool{svc: svc},
-		&listTool{svc: svc},
-		&queueListTool{svc: svc},
-		&getTool{svc: svc},
-		&editTool{svc: svc},
-		&actionEditTool{svc: svc},
-		&deleteTool{svc: svc},
+func Tools(svc *logicworkflow.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &createTool{svc: svc}, Safety: logicworkflow.CreateSafety},
+		{Tool: &listTool{svc: svc}, Safety: logicworkflow.ListSafety},
+		{Tool: &queueListTool{svc: svc}, Safety: logicworkflow.QueueListSafety},
+		{Tool: &getTool{svc: svc}, Safety: logicworkflow.GetSafety},
+		{Tool: &editTool{svc: svc}, Safety: logicworkflow.EditSafety},
+		{Tool: &actionEditTool{svc: svc}, Safety: logicworkflow.ActionEditSafety},
+		{Tool: &deleteTool{svc: svc}, Safety: logicworkflow.DeleteSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

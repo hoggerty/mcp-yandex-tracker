@@ -14,6 +14,7 @@ type getTool struct{ svc *logictrigger.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("trigger_get",
 		mcp.WithDescription("Get the parameters of a single Yandex Tracker trigger."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("trigger_id", mcp.Required(), mcp.Description("Trigger id")),
 	)

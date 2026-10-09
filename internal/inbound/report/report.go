@@ -2,21 +2,13 @@
 package report
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicreport "github.com/hoggerty/yandex-tracker-mcp/internal/logic/report"
 )
 
-func Tools(svc *logicreport.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&createTool{svc: svc},
-		&searchTool{svc: svc},
+func Tools(svc *logicreport.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &createTool{svc: svc}, Safety: logicreport.CreateSafety},
+		{Tool: &searchTool{svc: svc}, Safety: logicreport.SearchSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

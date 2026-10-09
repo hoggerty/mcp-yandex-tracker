@@ -14,6 +14,7 @@ type listTool struct{ svc *logicstatus.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("status_list",
 		mcp.WithDescription("List the issue statuses available in the Yandex Tracker organization."),
+		mcp.WithReadOnlyHintAnnotation(true),
 	)
 }
 

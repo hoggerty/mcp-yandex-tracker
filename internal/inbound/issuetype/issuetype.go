@@ -2,22 +2,14 @@
 package issuetype
 
 import (
-	"github.com/mark3labs/mcp-go/server"
-
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	logicissuetype "github.com/hoggerty/yandex-tracker-mcp/internal/logic/issuetype"
 )
 
-func Tools(svc *logicissuetype.Service) []server.ServerTool {
-	tools := []tool.Tool{
-		&listTool{svc: svc},
-		&createTool{svc: svc},
-		&editTool{svc: svc},
+func Tools(svc *logicissuetype.Service) []tool.Entry {
+	return []tool.Entry{
+		{Tool: &listTool{svc: svc}, Safety: logicissuetype.ListSafety},
+		{Tool: &createTool{svc: svc}, Safety: logicissuetype.CreateSafety},
+		{Tool: &editTool{svc: svc}, Safety: logicissuetype.EditSafety},
 	}
-
-	out := make([]server.ServerTool, len(tools))
-	for i, t := range tools {
-		out[i] = tool.NewServerTool(t)
-	}
-	return out
 }

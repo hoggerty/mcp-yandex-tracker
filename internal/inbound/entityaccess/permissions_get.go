@@ -14,6 +14,7 @@ type permissionsGetTool struct{ svc *logicentityaccess.Service }
 func (t *permissionsGetTool) Description() mcp.Tool {
 	return mcp.NewTool("entityaccess_permissions_get",
 		mcp.WithDescription("Get the plain permissions (users/groups/roles with access) for a Yandex Tracker entity."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 	)

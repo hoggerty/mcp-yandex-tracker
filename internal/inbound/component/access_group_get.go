@@ -14,6 +14,7 @@ type accessGroupGetTool struct{ svc *logiccomponent.Service }
 func (t *accessGroupGetTool) Description() mcp.Tool {
 	return mcp.NewTool("component_access_group_get",
 		mcp.WithDescription("Get a group's permissions for a Yandex Tracker component."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("component_id", mcp.Required(), mcp.Description("Component id")),
 		mcp.WithString("group_id", mcp.Required(), mcp.Description("Group id")),
 	)

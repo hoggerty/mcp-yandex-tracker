@@ -14,6 +14,7 @@ type getTool struct{ svc *logiccomponent.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("component_get",
 		mcp.WithDescription("Get the parameters of a single Yandex Tracker component."),
+		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Component id")),
 	)
 }

@@ -14,6 +14,7 @@ type createTool struct{ svc *logicboard.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("board_create",
 		mcp.WithDescription("Create a new Yandex Tracker agile board."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Board definition, e.g. {\"name\": \"...\", \"columns\": [...], \"queues\": [\"TEST\"]}")),
 	)
 }

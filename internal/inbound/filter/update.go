@@ -14,6 +14,7 @@ type updateTool struct{ svc *logicfilter.Service }
 func (t *updateTool) Description() mcp.Tool {
 	return mcp.NewTool("filter_update",
 		mcp.WithDescription("Replace a saved issue filter's name, conditions, and/or sort order. The filter conditions are replaced entirely, not merged — include all desired conditions."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Filter id")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Fields to set, e.g. {\"name\": \"...\", \"filter\": {\"status\": \"open\"}, \"sorts\": [{\"field\": \"priority\", \"isAscending\": false}]}")),
 	)

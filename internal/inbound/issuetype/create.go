@@ -14,6 +14,7 @@ type createTool struct{ svc *logicissuetype.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("issuetype_create",
 		mcp.WithDescription("Create a new issue type (requires Administrator rights)."),
+		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Issue type definition, e.g. {\"key\": \"client\", \"name\": {\"ru\": \"Клиент\", \"en\": \"Customer\"}}")),
 	)
 }
