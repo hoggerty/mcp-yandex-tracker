@@ -7,7 +7,6 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 	"github.com/spf13/cobra"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/outbound/trackerapi"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/wire"
 )
 
@@ -22,13 +21,12 @@ var RunServer = &cobra.Command{
 }
 
 func runServer() {
-	cfg, err := trackerapi.ConfigFromEnv()
+	s, err := wire.NewServer(VERSION)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "yandex-tracker-mcp: %v\n", err)
 		os.Exit(1)
 	}
 
-	s := wire.NewServer(cfg, VERSION)
 	if err := server.ServeStdio(s); err != nil {
 		fmt.Fprintf(os.Stderr, "yandex-tracker-mcp: server error: %v\n", err)
 		os.Exit(1)
