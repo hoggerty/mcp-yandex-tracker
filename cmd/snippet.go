@@ -3,7 +3,6 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 
 	"github.com/spf13/cobra"
 )
@@ -33,11 +32,7 @@ type mcpServersSnippet struct {
 }
 
 func printSnippet(env []envVar) {
-	bin, err := os.Executable()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "yandex-tracker-mcp: %v\n", err)
-		return
-	}
+	bin := currentBinary()
 
 	envMap := make(map[string]string, len(env))
 	for _, v := range env {
@@ -52,8 +47,7 @@ func printSnippet(env []envVar) {
 
 	out, err := json.MarshalIndent(snippet, "", "  ")
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "yandex-tracker-mcp: %v\n", err)
-		return
+		fatalf("%v", err)
 	}
 
 	fmt.Println(string(out))

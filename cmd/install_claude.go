@@ -1,9 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/spf13/cobra"
 )
 
@@ -22,11 +19,7 @@ var RunInstallClaude = &cobra.Command{
 }
 
 func installClaude(env []envVar) {
-	bin, err := os.Executable()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "yandex-tracker-mcp: %v\n", err)
-		return
-	}
+	bin := currentBinary()
 
 	args := []string{"mcp", "add", "-s", "user"}
 	for _, v := range env {

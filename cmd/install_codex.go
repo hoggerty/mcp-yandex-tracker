@@ -1,9 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/spf13/cobra"
 )
 
@@ -22,11 +19,7 @@ var RunInstallCodex = &cobra.Command{
 }
 
 func installCodex(env []envVar) {
-	bin, err := os.Executable()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "yandex-tracker-mcp: %v\n", err)
-		return
-	}
+	bin := currentBinary()
 
 	args := []string{"mcp", "add", "yandex-tracker"}
 	for _, v := range env {
