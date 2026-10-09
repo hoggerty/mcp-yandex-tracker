@@ -1,9 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/mark3labs/mcp-go/server"
 	"github.com/spf13/cobra"
 
@@ -23,12 +20,10 @@ var RunServer = &cobra.Command{
 func runServer() {
 	s, err := wire.NewServer(VERSION)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "yandex-tracker-mcp: %v\n", err)
-		os.Exit(1)
+		fatalf("%v", err)
 	}
 
 	if err := server.ServeStdio(s); err != nil {
-		fmt.Fprintf(os.Stderr, "yandex-tracker-mcp: server error: %v\n", err)
-		os.Exit(1)
+		fatalf("server error: %v", err)
 	}
 }

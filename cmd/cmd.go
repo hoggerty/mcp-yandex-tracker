@@ -2,7 +2,6 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -23,8 +22,7 @@ var rootCmd = &cobra.Command{
 func init() {
 	// .env is optional
 	if err := godotenv.Load(); err != nil && !os.IsNotExist(err) {
-		fmt.Fprintf(os.Stderr, "yandex-tracker-mcp: failed to load .env: %v\n", err)
-		os.Exit(1)
+		fatalf("failed to load .env: %v", err)
 	}
 
 	rootCmd.AddCommand(RunServer)
