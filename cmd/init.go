@@ -9,7 +9,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/trackerapi"
+	"github.com/hoggerty/yandex-tracker-mcp/internal/outbound/trackerapi"
 )
 
 // RunInit is the interactive setup wizard: it writes a .env file and,
