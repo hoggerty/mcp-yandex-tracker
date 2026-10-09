@@ -22,6 +22,22 @@ func Tools(svc *logicissue.Service) []server.ServerTool {
 		&linksListTool{svc: svc},
 		&linkAddTool{svc: svc},
 		&changelogGetTool{svc: svc},
+		&moveTool{svc: svc},
+		&suggestTool{svc: svc},
+		&searchReleaseTool{svc: svc},
+		&checklistAddTool{svc: svc},
+		&checklistListTool{svc: svc},
+		&checklistEditTool{svc: svc},
+		&checklistDeleteTool{svc: svc},
+		&checklistItemDeleteTool{svc: svc},
+		&commentGetTool{svc: svc},
+		&commentEditTool{svc: svc},
+		&commentDeleteTool{svc: svc},
+		&commentReactionAddTool{svc: svc},
+		&linksListPaginateTool{svc: svc},
+		&linkDeleteTool{svc: svc},
+		&attachmentListTool{svc: svc},
+		&attachmentGetTool{svc: svc},
 	}
 
 	out := make([]server.ServerTool, len(tools))

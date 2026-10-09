@@ -12,6 +12,19 @@ func Tools(svc *logicqueue.Service) []server.ServerTool {
 	tools := []tool.Tool{
 		&listTool{svc: svc},
 		&getTool{svc: svc},
+		&createTool{svc: svc},
+		&deleteTool{svc: svc},
+		&restoreTool{svc: svc},
+		&fieldsListTool{svc: svc},
+		&tagsListTool{svc: svc},
+		&tagDeleteTool{svc: svc},
+		&accessManageTool{svc: svc},
+		&accessUserGetTool{svc: svc},
+		&accessGroupGetTool{svc: svc},
+		&localFieldCreateTool{svc: svc},
+		&localFieldsListTool{svc: svc},
+		&localFieldGetTool{svc: svc},
+		&localFieldEditTool{svc: svc},
 	}
 
 	out := make([]server.ServerTool, len(tools))

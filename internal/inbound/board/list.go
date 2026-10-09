@@ -14,9 +14,11 @@ type listTool struct{ svc *logicboard.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("boards_list",
 		mcp.WithDescription("List Yandex Tracker agile boards visible to the current user."),
+		mcp.WithNumber("per_page", mcp.Description("Results per page, max 500")),
+		mcp.WithNumber("id", mcp.Description("Last board ID from the previous page; omit for the first page")),
 	)
 }
 
-func (t *listTool) Handle(ctx context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	return result.JSON(t.svc.List(ctx))
+func (t *listTool) Handle(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	return result.JSON(t.svc.List(ctx, req.GetInt("per_page", 0), req.GetInt("id", 0)))
 }
