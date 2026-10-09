@@ -12,6 +12,8 @@ func Tools(svc *logicuser.Service) []server.ServerTool {
 	tools := []tool.Tool{
 		&currentTool{svc: svc},
 		&listTool{svc: svc},
+		&getTool{svc: svc},
+		&listRelativeTool{svc: svc},
 	}
 
 	out := make([]server.ServerTool, len(tools))

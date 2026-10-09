@@ -1,0 +1,11 @@
+package entitycomment
+
+import (
+	"context"
+	"encoding/json"
+)
+
+// Add adds a comment to an entity.
+func (s *Service) Add(ctx context.Context, entityType, id string, fields map[string]any) (json.RawMessage, error) {
+	return s.client.AddEntityComment(ctx, entityType, id, fields)
+}

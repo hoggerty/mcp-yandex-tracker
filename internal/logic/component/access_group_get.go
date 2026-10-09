@@ -1,0 +1,11 @@
+package component
+
+import (
+	"context"
+	"encoding/json"
+)
+
+// AccessGroupGet retrieves a group's permissions for a component.
+func (s *Service) AccessGroupGet(ctx context.Context, componentID, groupID string) (json.RawMessage, error) {
+	return s.client.GetComponentGroupAccess(ctx, componentID, groupID)
+}

@@ -12,6 +12,10 @@ func Tools(svc *logicboard.Service) []server.ServerTool {
 	tools := []tool.Tool{
 		&listTool{svc: svc},
 		&sprintsListTool{svc: svc},
+		&getTool{svc: svc},
+		&createTool{svc: svc},
+		&editTool{svc: svc},
+		&deleteTool{svc: svc},
 	}
 
 	out := make([]server.ServerTool, len(tools))

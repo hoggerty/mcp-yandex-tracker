@@ -1,0 +1,11 @@
+package entity
+
+import (
+	"context"
+	"encoding/json"
+)
+
+// Get retrieves the parameters of a single entity. expand and fields are optional.
+func (s *Service) Get(ctx context.Context, entityType, id, expand, fields string) (json.RawMessage, error) {
+	return s.client.GetEntity(ctx, entityType, id, expand, fields)
+}
