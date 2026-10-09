@@ -9,7 +9,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/outbound/trackerapi"
+	"github.com/hoggerty/yandex-tracker-mcp/internal/wire/config"
 )
 
 // RunInit is the interactive setup wizard: it writes a .env file and,
@@ -54,19 +54,22 @@ func requireEnv() ([]envVar, bool) {
 // either directly or via .env, see cmd.go's init()), reusing the same
 // parsing and "one of OrgID/CloudOrgID" validation as the server itself.
 func loadedEnv() ([]envVar, bool) {
-	cfg, err := trackerapi.ConfigFromEnv()
+	cfg, err := config.Load()
 	if err != nil {
 		return nil, false
 	}
-
-	env := []envVar{{"YANDEX_TRACKER_TOKEN", cfg.Token}}
-	if cfg.OrgID != "" {
-		env = append(env, envVar{"YANDEX_TRACKER_ORG_ID", cfg.OrgID})
-	} else {
-		env = append(env, envVar{"YANDEX_TRACKER_CLOUD_ORG_ID", cfg.CloudOrgID})
+	if err := cfg.TrackerClient.Validate(); err != nil {
+		return nil, false
 	}
-	// BaseURL always has a default (see Config), so only pass it along if the
-	// user actually overrode it.
+
+	env := []envVar{{"YANDEX_TRACKER_TOKEN", cfg.TrackerClient.Token}}
+	if cfg.TrackerClient.OrgID != "" {
+		env = append(env, envVar{"YANDEX_TRACKER_ORG_ID", cfg.TrackerClient.OrgID})
+	} else {
+		env = append(env, envVar{"YANDEX_TRACKER_CLOUD_ORG_ID", cfg.TrackerClient.CloudOrgID})
+	}
+	// BaseURL always has a default (see TrackerClientConfig), so only pass it
+	// along if the user actually overrode it.
 	if baseURL := os.Getenv("YANDEX_TRACKER_BASE_URL"); baseURL != "" {
 		env = append(env, envVar{"YANDEX_TRACKER_BASE_URL", baseURL})
 	}
