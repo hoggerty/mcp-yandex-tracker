@@ -7,8 +7,8 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 	"github.com/spf13/cobra"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/mcptools"
-	"github.com/hoggerty/yandex-tracker-mcp/internal/trackerapi"
+	"github.com/hoggerty/yandex-tracker-mcp/internal/outbound/trackerapi"
+	"github.com/hoggerty/yandex-tracker-mcp/internal/wire"
 )
 
 // RunServer starts the MCP server over stdio.
@@ -28,9 +28,7 @@ func runServer() {
 		os.Exit(1)
 	}
 
-	s := server.NewMCPServer("yandex-tracker-mcp", VERSION)
-	mcptools.RegisterTools(s, trackerapi.New(cfg))
-
+	s := wire.NewServer(cfg, VERSION)
 	if err := server.ServeStdio(s); err != nil {
 		fmt.Fprintf(os.Stderr, "yandex-tracker-mcp: server error: %v\n", err)
 		os.Exit(1)
