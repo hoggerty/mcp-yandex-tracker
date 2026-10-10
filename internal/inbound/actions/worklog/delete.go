@@ -1,0 +1,32 @@
+package worklog
+
+import (
+	"context"
+
+	"github.com/mark3labs/mcp-go/mcp"
+
+	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
+	logicworklog "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/worklog"
+)
+
+type DeleteTool struct{ Svc *logicworklog.Service }
+
+func (t *DeleteTool) Description() mcp.Tool {
+	return mcp.NewTool("worklog_delete",
+		mcp.WithDescription("Delete a worklog record from a Yandex Tracker issue."),
+		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
+		mcp.WithString("worklog_id", mcp.Required(), mcp.Description("Worklog record id")),
+	)
+}
+
+func (t *DeleteTool) Handle(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	issueKey, err := req.RequireString("issue_key")
+	if err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+	worklogID, err := req.RequireString("worklog_id")
+	if err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+	return result.JSON(t.Svc.Delete(ctx, issueKey, worklogID))
+}
