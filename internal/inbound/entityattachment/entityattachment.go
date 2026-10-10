@@ -8,8 +8,8 @@ import (
 
 func Tools(svc *logicentityattachment.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &listTool{svc: svc}, Safety: logicentityattachment.ListSafety},
-		{Tool: &getTool{svc: svc}, Safety: logicentityattachment.GetSafety},
-		{Tool: &deleteTool{svc: svc}, Safety: logicentityattachment.DeleteSafety},
+		{Tool: &listTool{svc: svc}, Safety: svc.ListSafety()},
+		{Tool: &getTool{svc: svc}, Safety: svc.GetSafety()},
+		{Tool: &deleteTool{svc: svc}, Safety: svc.DeleteSafety()},
 	}
 }

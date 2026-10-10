@@ -14,7 +14,6 @@ type linkTool struct{ svc *logicimportdata.Service }
 func (t *linkTool) Description() mcp.Tool {
 	return mcp.NewTool("import_link",
 		mcp.WithDescription("Add a link to an issue preserving historical metadata. Administrator only."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_id", mcp.Required(), mcp.Description("Issue id or key")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("e.g. {\"relationship\": \"relates\", \"issue\": \"TEST-2\", \"createdAt\": \"...\", \"createdBy\": 11234567, \"updatedAt\": \"...\", \"updatedBy\": 11234567}; relationship, issue, createdAt, createdBy are required")),
 	)

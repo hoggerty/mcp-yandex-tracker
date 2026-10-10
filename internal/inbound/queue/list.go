@@ -14,7 +14,6 @@ type listTool struct{ svc *logicqueue.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("queues_list",
 		mcp.WithDescription("List Yandex Tracker queues visible to the current user."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithNumber("per_page", mcp.Description("Results per page")),
 		mcp.WithNumber("page", mcp.Description("Page number, starting at 1")),
 	)

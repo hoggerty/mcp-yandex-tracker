@@ -14,7 +14,6 @@ type commentDeleteTool struct{ svc *logicissue.Service }
 func (t *commentDeleteTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_comment_delete",
 		mcp.WithDescription("Delete a Yandex Tracker issue comment."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("comment_id", mcp.Required(), mcp.Description("Comment id")),
 	)

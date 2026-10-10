@@ -14,7 +14,6 @@ type searchReleaseTool struct{ svc *logicissue.Service }
 func (t *searchReleaseTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_search_release",
 		mcp.WithDescription("Release server-side resources held by a scrolled issue_search request."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("scroll_id", mcp.Required(), mcp.Description("Value of the X-Scroll-Id response header from the search")),
 		mcp.WithString("scroll_token", mcp.Required(), mcp.Description("Value of the X-Scroll-Token response header from the search")),
 	)

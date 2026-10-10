@@ -14,7 +14,6 @@ type commentAddTool struct{ svc *logicissue.Service }
 func (t *commentAddTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_comment_add",
 		mcp.WithDescription("Add a comment to a Yandex Tracker issue, optionally summoning other users."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("text", mcp.Required(), mcp.Description("Comment body")),
 		mcp.WithArray("summonees", mcp.Description("Logins of users to notify/summon")),

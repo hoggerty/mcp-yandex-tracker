@@ -7,8 +7,12 @@ import (
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
 
-const LinkSafety = safety.Write
+func (s *Service) LinkSafety() safety.Level { return safety.Write }
 
 func (s *Service) Link(ctx context.Context, issueID string, fields map[string]any) (json.RawMessage, error) {
+	if err := s.guard.Check(s.LinkSafety()); err != nil {
+		return nil, err
+	}
+
 	return s.client.ImportLink(ctx, issueID, fields)
 }

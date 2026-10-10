@@ -14,7 +14,6 @@ type createTool struct{ svc *logicmacro.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("macro_create",
 		mcp.WithDescription("Create a new macro on a Yandex Tracker queue."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Macro definition, e.g. {\"name\": \"...\", \"body\": \"comment text\", \"issueUpdate\": {\"tags\": {\"add\": \"New tag\"}}}")),
 	)

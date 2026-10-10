@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logicworklog.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("worklog_delete",
 		mcp.WithDescription("Delete a worklog record from a Yandex Tracker issue."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("worklog_id", mcp.Required(), mcp.Description("Worklog record id")),
 	)

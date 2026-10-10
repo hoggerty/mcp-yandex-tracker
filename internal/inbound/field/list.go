@@ -14,7 +14,6 @@ type listTool struct{ svc *logicfield.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("field_list",
 		mcp.WithDescription("List all global issue fields of the organization."),
-		mcp.WithReadOnlyHintAnnotation(true),
 	)
 }
 

@@ -8,8 +8,8 @@ import (
 
 func Tools(svc *logicstatus.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &listTool{svc: svc}, Safety: logicstatus.ListSafety},
-		{Tool: &createTool{svc: svc}, Safety: logicstatus.CreateSafety},
-		{Tool: &editTool{svc: svc}, Safety: logicstatus.EditSafety},
+		{Tool: &listTool{svc: svc}, Safety: svc.ListSafety()},
+		{Tool: &createTool{svc: svc}, Safety: svc.CreateSafety()},
+		{Tool: &editTool{svc: svc}, Safety: svc.EditSafety()},
 	}
 }

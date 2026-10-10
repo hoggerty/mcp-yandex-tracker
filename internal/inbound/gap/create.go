@@ -14,7 +14,6 @@ type createTool struct{ svc *logicgap.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("gap_create",
 		mcp.WithDescription("Create employee absence records (vacation, illness, trip, etc). Administrator only."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithArray("gaps", mcp.Required(), mcp.Description("Array of absence objects, e.g. [{\"user\": \"login\", \"workflow\": \"vacation\", \"from\": \"2026-07-01T00:00:00.000Z\", \"to\": \"2026-07-15T00:00:00.000Z\", \"fullDay\": true, \"workInAbsence\": false}]; user, workflow, from, to are required")),
 	)
 }

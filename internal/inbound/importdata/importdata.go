@@ -8,9 +8,9 @@ import (
 
 func Tools(svc *logicimportdata.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &ticketTool{svc: svc}, Safety: logicimportdata.TicketSafety},
-		{Tool: &commentTool{svc: svc}, Safety: logicimportdata.CommentSafety},
-		{Tool: &linkTool{svc: svc}, Safety: logicimportdata.LinkSafety},
-		{Tool: &worklogTool{svc: svc}, Safety: logicimportdata.WorklogSafety},
+		{Tool: &ticketTool{svc: svc}, Safety: svc.TicketSafety()},
+		{Tool: &commentTool{svc: svc}, Safety: svc.CommentSafety()},
+		{Tool: &linkTool{svc: svc}, Safety: svc.LinkSafety()},
+		{Tool: &worklogTool{svc: svc}, Safety: svc.WorklogSafety()},
 	}
 }

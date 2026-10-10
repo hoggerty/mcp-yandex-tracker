@@ -14,7 +14,6 @@ type searchTool struct{ svc *logicreport.Service }
 func (t *searchTool) Description() mcp.Tool {
 	return mcp.NewTool("report_search",
 		mcp.WithDescription("Find previously generated Yandex Tracker issue reports."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithObject("filter", mcp.Description("Filter, e.g. {\"author\": \"...\", \"id\": \"...\"}")),
 		mcp.WithNumber("per_page", mcp.Description("Reports per page (default 50)")),
 		mcp.WithNumber("page", mcp.Description("Page number, starting at 1")),

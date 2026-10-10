@@ -14,7 +14,6 @@ type getTool struct{ svc *logicfield.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("field_get",
 		mcp.WithDescription("Get the parameters of a single global issue field."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Field id/key")),
 	)
 }

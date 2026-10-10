@@ -7,9 +7,13 @@ import (
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
 
-const GetSafety = safety.ReadOnly
+func (s *Service) GetSafety() safety.Level { return safety.ReadOnly }
 
 // Get retrieves metadata of a single file attached to an entity.
 func (s *Service) Get(ctx context.Context, entityType, id, fileID string) (json.RawMessage, error) {
+	if err := s.guard.Check(s.GetSafety()); err != nil {
+		return nil, err
+	}
+
 	return s.client.GetEntityAttachment(ctx, entityType, id, fileID)
 }

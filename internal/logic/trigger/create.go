@@ -7,9 +7,13 @@ import (
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
 
-const CreateSafety = safety.Write
+func (s *Service) CreateSafety() safety.Level { return safety.Write }
 
 // Create creates a new trigger on a queue.
 func (s *Service) Create(ctx context.Context, queueKey string, fields map[string]any) (json.RawMessage, error) {
+	if err := s.guard.Check(s.CreateSafety()); err != nil {
+		return nil, err
+	}
+
 	return s.client.CreateTrigger(ctx, queueKey, fields)
 }

@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logicproject.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("project_delete",
 		mcp.WithDescription("Delete a Yandex Tracker project."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Project id")),
 	)
 }

@@ -7,9 +7,13 @@ import (
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
 
-const ChecklistItemDeleteSafety = safety.Destructive
+func (s *Service) ChecklistItemDeleteSafety() safety.Level { return safety.Destructive }
 
 // ChecklistItemDelete deletes a single item from an issue's checklist.
 func (s *Service) ChecklistItemDelete(ctx context.Context, issueKey, itemID string) (json.RawMessage, error) {
+	if err := s.guard.Check(s.ChecklistItemDeleteSafety()); err != nil {
+		return nil, err
+	}
+
 	return s.client.DeleteChecklistItem(ctx, issueKey, itemID)
 }

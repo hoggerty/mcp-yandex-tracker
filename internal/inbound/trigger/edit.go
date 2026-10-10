@@ -14,7 +14,6 @@ type editTool struct{ svc *logictrigger.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("trigger_edit",
 		mcp.WithDescription("Edit a Yandex Tracker trigger."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("trigger_id", mcp.Required(), mcp.Description("Trigger id")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Trigger's current version (for optimistic locking)")),

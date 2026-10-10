@@ -8,9 +8,9 @@ import (
 
 func Tools(svc *logicexternallink.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &applicationsListTool{svc: svc}, Safety: logicexternallink.ApplicationsListSafety},
-		{Tool: &listTool{svc: svc}, Safety: logicexternallink.ListSafety},
-		{Tool: &addTool{svc: svc}, Safety: logicexternallink.AddSafety},
-		{Tool: &deleteTool{svc: svc}, Safety: logicexternallink.DeleteSafety},
+		{Tool: &applicationsListTool{svc: svc}, Safety: svc.ApplicationsListSafety()},
+		{Tool: &listTool{svc: svc}, Safety: svc.ListSafety()},
+		{Tool: &addTool{svc: svc}, Safety: svc.AddSafety()},
+		{Tool: &deleteTool{svc: svc}, Safety: svc.DeleteSafety()},
 	}
 }

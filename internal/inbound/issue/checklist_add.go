@@ -14,7 +14,6 @@ type checklistAddTool struct{ svc *logicissue.Service }
 func (t *checklistAddTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_checklist_add",
 		mcp.WithDescription("Add an item to a Yandex Tracker issue's checklist, creating the checklist if needed."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("text", mcp.Required(), mcp.Description("Checklist item text")),
 		mcp.WithObject("fields", mcp.Description("Additional item fields, e.g. assignee, deadline")),

@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logicentity.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("entity_delete",
 		mcp.WithDescription("Delete a Yandex Tracker entity (project, portfolio, or goal)."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithBoolean("with_board", mcp.Description("Also delete the entity's board; default false")),

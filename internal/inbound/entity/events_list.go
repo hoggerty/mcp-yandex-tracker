@@ -14,7 +14,6 @@ type eventsListTool struct{ svc *logicentity.Service }
 func (t *eventsListTool) Description() mcp.Tool {
 	return mcp.NewTool("entity_events_list",
 		mcp.WithDescription("Get a Yandex Tracker entity's change history, paginated relative to an event id."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithNumber("per_page", mcp.Description("Max events per response, default 50")),

@@ -14,7 +14,6 @@ type listTool struct{ svc *logicmacro.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("macro_list",
 		mcp.WithDescription("List the macros configured on a Yandex Tracker queue."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 	)
 }

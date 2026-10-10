@@ -16,7 +16,6 @@ type deleteTool struct {
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("entityattachment_delete",
 		mcp.WithDescription("Delete an attachment from a Yandex Tracker entity."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithString("file_id", mcp.Required(), mcp.Description("Attachment file id")),

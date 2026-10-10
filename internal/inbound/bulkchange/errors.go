@@ -14,7 +14,6 @@ type errorsTool struct{ svc *logicbulkchange.Service }
 func (t *errorsTool) Description() mcp.Tool {
 	return mcp.NewTool("bulkchange_errors",
 		mcp.WithDescription("Get the issues that failed within a bulk-change operation, with error details."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Bulk-change operation id")),
 	)
 }

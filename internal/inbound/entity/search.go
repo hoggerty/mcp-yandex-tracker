@@ -14,7 +14,6 @@ type searchTool struct{ svc *logicentity.Service }
 func (t *searchTool) Description() mcp.Tool {
 	return mcp.NewTool("entity_search",
 		mcp.WithDescription("List Yandex Tracker entities of a given type matching a filter."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithObject("body", mcp.Description("e.g. {\"filter\": {\"entityStatus\": \"in_progress\"}, \"orderBy\": \"entityStatus\", \"orderAsc\": true, \"input\": \"substring\"}")),
 		mcp.WithString("fields", mcp.Description("Optional comma-separated additional fields to include")),

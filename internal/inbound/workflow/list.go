@@ -14,7 +14,6 @@ type listTool struct{ svc *logicworkflow.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("workflow_list",
 		mcp.WithDescription("List all Yandex Tracker workflows in the organization."),
-		mcp.WithReadOnlyHintAnnotation(true),
 	)
 }
 

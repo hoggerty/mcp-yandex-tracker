@@ -8,11 +8,11 @@ import (
 
 func Tools(svc *logicsprint.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &getTool{svc: svc}, Safety: logicsprint.GetSafety},
-		{Tool: &createTool{svc: svc}, Safety: logicsprint.CreateSafety},
-		{Tool: &editTool{svc: svc}, Safety: logicsprint.EditSafety},
-		{Tool: &startTool{svc: svc}, Safety: logicsprint.StartSafety},
-		{Tool: &archiveTool{svc: svc}, Safety: logicsprint.ArchiveSafety},
-		{Tool: &deleteTool{svc: svc}, Safety: logicsprint.DeleteSafety},
+		{Tool: &getTool{svc: svc}, Safety: svc.GetSafety()},
+		{Tool: &createTool{svc: svc}, Safety: svc.CreateSafety()},
+		{Tool: &editTool{svc: svc}, Safety: svc.EditSafety()},
+		{Tool: &startTool{svc: svc}, Safety: svc.StartSafety()},
+		{Tool: &archiveTool{svc: svc}, Safety: svc.ArchiveSafety()},
+		{Tool: &deleteTool{svc: svc}, Safety: svc.DeleteSafety()},
 	}
 }

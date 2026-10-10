@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logicqueue.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_delete",
 		mcp.WithDescription("Delete a Yandex Tracker queue."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 	)
 }

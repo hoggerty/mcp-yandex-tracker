@@ -14,7 +14,6 @@ type updateTool struct{ svc *logicbulkchange.Service }
 func (t *updateTool) Description() mcp.Tool {
 	return mcp.NewTool("bulkchange_update",
 		mcp.WithDescription("Start a background operation that sets field values on many Yandex Tracker issues (up to 10000 issues)."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithArray("issues", mcp.Required(), mcp.Description("Issue keys to update"), mcp.WithStringItems()),
 		mcp.WithObject("values", mcp.Required(), mcp.Description("Field values to set, e.g. {\"priority\": \"minor\"}")),
 		mcp.WithBoolean("notify", mcp.Description("Notify affected users (default false)")),

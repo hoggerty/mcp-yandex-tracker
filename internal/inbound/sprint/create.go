@@ -14,7 +14,6 @@ type createTool struct{ svc *logicsprint.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("sprint_create",
 		mcp.WithDescription("Create a new sprint on a Yandex Tracker agile board."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Sprint definition, e.g. {\"name\": \"...\", \"board\": {\"id\": \"1\"}, \"startDate\": \"2024-01-01\", \"endDate\": \"2024-01-14\"}")),
 	)
 }

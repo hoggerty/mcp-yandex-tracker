@@ -14,7 +14,6 @@ type startTool struct{ svc *logicsprint.Service }
 func (t *startTool) Description() mcp.Tool {
 	return mcp.NewTool("sprint_start",
 		mcp.WithDescription("Start a Yandex Tracker sprint (set its status to in progress)."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Sprint id")),
 		mcp.WithNumber("version", mcp.Description("Sprint's current version (for optimistic locking); omit to skip the check")),
 	)

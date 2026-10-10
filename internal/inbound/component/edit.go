@@ -14,7 +14,6 @@ type editTool struct{ svc *logiccomponent.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("component_edit",
 		mcp.WithDescription("Edit a Yandex Tracker component."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Component id")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Component's current version (for optimistic locking)")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Parameters to set, e.g. {\"name\": \"...\", \"description\": \"...\", \"lead\": \"login\", \"assignAuto\": true}")),

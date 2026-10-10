@@ -14,7 +14,6 @@ type applicationsListTool struct{ svc *logicexternallink.Service }
 func (t *applicationsListTool) Description() mcp.Tool {
 	return mcp.NewTool("externallink_applications_list",
 		mcp.WithDescription("List external applications known to Tracker (usable as external-link origins)."),
-		mcp.WithReadOnlyHintAnnotation(true),
 	)
 }
 

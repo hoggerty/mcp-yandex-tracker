@@ -1,8 +1,16 @@
 // Package workflow contains the Yandex Tracker workflow use-case service.
 package workflow
 
-import "github.com/hoggerty/yandex-tracker-mcp/internal/outbound/trackerapi"
+import (
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
+	"github.com/hoggerty/yandex-tracker-mcp/internal/outbound/trackerapi"
+)
 
-type Service struct{ client *trackerapi.Client }
+type Service struct {
+	client *trackerapi.Client
+	guard  safety.Guard
+}
 
-func New(client *trackerapi.Client) *Service { return &Service{client: client} }
+func New(client *trackerapi.Client, guard safety.Guard) *Service {
+	return &Service{client: client, guard: guard}
+}

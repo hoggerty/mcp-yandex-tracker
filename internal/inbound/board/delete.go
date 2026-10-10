@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logicboard.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("board_delete",
 		mcp.WithDescription("Delete a Yandex Tracker agile board."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Board id")),
 	)
 }

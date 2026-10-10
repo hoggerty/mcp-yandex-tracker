@@ -5,6 +5,7 @@ import (
 
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic"
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/outbound/trackerapi"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/wire/config"
 )
@@ -30,7 +31,8 @@ func NewServer(version string) (*server.MCPServer, error) {
 		CloudOrgID: cfg.TrackerClient.CloudOrgID,
 		BaseURL:    cfg.TrackerClient.BaseURL,
 	})
-	svcs := logic.New(client)
+	guard := safety.NewGuard(cfg.Tools.Mode)
+	svcs := logic.New(client, guard)
 
 	s := server.NewMCPServer("yandex-tracker-mcp", version)
 	policy := inbound.Policy{Mode: cfg.Tools.Mode, DisabledTools: cfg.Tools.DisabledTools}

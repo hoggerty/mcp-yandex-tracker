@@ -7,9 +7,13 @@ import (
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
 
-const GetSafety = safety.ReadOnly
+func (s *Service) GetSafety() safety.Level { return safety.ReadOnly }
 
 // Get retrieves the parameters of an auto action.
 func (s *Service) Get(ctx context.Context, queueKey, autoActionID string) (json.RawMessage, error) {
+	if err := s.guard.Check(s.GetSafety()); err != nil {
+		return nil, err
+	}
+
 	return s.client.GetAutoAction(ctx, queueKey, autoActionID)
 }

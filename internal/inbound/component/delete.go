@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logiccomponent.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("component_delete",
 		mcp.WithDescription("Delete a Yandex Tracker component."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Component id")),
 	)
 }

@@ -8,10 +8,10 @@ import (
 
 func Tools(svc *logictrigger.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &createTool{svc: svc}, Safety: logictrigger.CreateSafety},
-		{Tool: &listTool{svc: svc}, Safety: logictrigger.ListSafety},
-		{Tool: &getTool{svc: svc}, Safety: logictrigger.GetSafety},
-		{Tool: &editTool{svc: svc}, Safety: logictrigger.EditSafety},
-		{Tool: &logsListTool{svc: svc}, Safety: logictrigger.LogsListSafety},
+		{Tool: &createTool{svc: svc}, Safety: svc.CreateSafety()},
+		{Tool: &listTool{svc: svc}, Safety: svc.ListSafety()},
+		{Tool: &getTool{svc: svc}, Safety: svc.GetSafety()},
+		{Tool: &editTool{svc: svc}, Safety: svc.EditSafety()},
+		{Tool: &logsListTool{svc: svc}, Safety: svc.LogsListSafety()},
 	}
 }

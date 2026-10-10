@@ -12,7 +12,9 @@ import (
 
 // Tool is a single Yandex Tracker operation exposed as an MCP tool. Each
 // implementation is a standalone struct so that a tool's definition, schema,
-// and handler live together.
+// and handler live together. Description must not set the ReadOnlyHint or
+// DestructiveHint annotations itself — Entry derives them from the logic
+// layer's Safety classification, so they can't drift out of sync with it.
 type Tool interface {
 	Description() mcp.Tool
 	Handle(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error)
@@ -26,7 +28,13 @@ type Entry struct {
 	Safety safety.Level
 }
 
-// ServerTool adapts Entry to the type the mcp-go server registers.
+// ServerTool adapts Entry to the type the mcp-go server registers, setting
+// the tool's ReadOnlyHint/DestructiveHint annotations from Safety.
 func (e Entry) ServerTool() server.ServerTool {
-	return server.ServerTool{Tool: e.Tool.Description(), Handler: e.Tool.Handle}
+	t := e.Tool.Description()
+	readOnly := e.Safety == safety.ReadOnly
+	destructive := e.Safety == safety.Destructive
+	t.Annotations.ReadOnlyHint = &readOnly
+	t.Annotations.DestructiveHint = &destructive
+	return server.ServerTool{Tool: t, Handler: e.Tool.Handle}
 }

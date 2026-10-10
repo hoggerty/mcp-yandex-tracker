@@ -14,7 +14,6 @@ type editTool struct{ svc *logicentitycomment.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("entitycomment_edit",
 		mcp.WithDescription("Edit a comment on a Yandex Tracker entity."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithString("comment_id", mcp.Required(), mcp.Description("Comment id")),

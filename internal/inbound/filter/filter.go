@@ -8,9 +8,9 @@ import (
 
 func Tools(svc *logicfilter.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &createTool{svc: svc}, Safety: logicfilter.CreateSafety},
-		{Tool: &getTool{svc: svc}, Safety: logicfilter.GetSafety},
-		{Tool: &updateTool{svc: svc}, Safety: logicfilter.UpdateSafety},
-		{Tool: &deleteTool{svc: svc}, Safety: logicfilter.DeleteSafety},
+		{Tool: &createTool{svc: svc}, Safety: svc.CreateSafety()},
+		{Tool: &getTool{svc: svc}, Safety: svc.GetSafety()},
+		{Tool: &updateTool{svc: svc}, Safety: svc.UpdateSafety()},
+		{Tool: &deleteTool{svc: svc}, Safety: svc.DeleteSafety()},
 	}
 }

@@ -14,7 +14,6 @@ type checklistListTool struct{ svc *logicissue.Service }
 func (t *checklistListTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_checklist_list",
 		mcp.WithDescription("List the items of a Yandex Tracker issue's checklist."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 	)
 }

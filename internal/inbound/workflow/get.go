@@ -14,7 +14,6 @@ type getTool struct{ svc *logicworkflow.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("workflow_get",
 		mcp.WithDescription("Get a single Yandex Tracker workflow by id."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Workflow id")),
 	)
 }

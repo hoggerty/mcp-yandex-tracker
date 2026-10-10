@@ -1,26 +1,20 @@
 package config
 
-import "fmt"
+import (
+	"fmt"
 
-type ToolsMode string
-
-const (
-	ToolsModeReadOnly  ToolsMode = "read-only"
-	ToolsModeReadWrite ToolsMode = "read-write"
-	ToolsModeFull      ToolsMode = "full"
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
 
 type ToolsConfig struct {
-	Mode          ToolsMode `env:"YANDEX_TRACKER_TOOLS_MODE" envDefault:"read-write"`
-	DisabledTools []string  `env:"YANDEX_TRACKER_DISABLED_TOOLS" envSeparator:","`
+	Mode          safety.Mode `env:"YANDEX_TRACKER_TOOLS_MODE" envDefault:"read-write"`
+	DisabledTools []string    `env:"YANDEX_TRACKER_DISABLED_TOOLS" envSeparator:","`
 }
 
 func (c ToolsConfig) Validate() error {
-	switch c.Mode {
-	case ToolsModeReadOnly, ToolsModeReadWrite, ToolsModeFull:
-		return nil
-	default:
+	if !c.Mode.Valid() {
 		return fmt.Errorf("invalid YANDEX_TRACKER_TOOLS_MODE %q: must be one of %q, %q, %q",
-			c.Mode, ToolsModeReadOnly, ToolsModeReadWrite, ToolsModeFull)
+			c.Mode, safety.ModeReadOnly, safety.ModeReadWrite, safety.ModeFull)
 	}
+	return nil
 }

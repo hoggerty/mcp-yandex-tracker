@@ -14,7 +14,6 @@ type attachmentGetTool struct{ svc *logicissue.Service }
 func (t *attachmentGetTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_attachment_get",
 		mcp.WithDescription("Retrieve metadata for a single file attached to a Yandex Tracker issue."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("attachment_id", mcp.Required(), mcp.Description("Attachment id")),
 	)

@@ -14,7 +14,6 @@ type listTool struct{ svc *logicproject.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("project_list",
 		mcp.WithDescription("List all Yandex Tracker projects."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("expand", mcp.Description("Optional: \"queues\"")),
 	)
 }

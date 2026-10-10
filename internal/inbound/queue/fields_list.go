@@ -14,7 +14,6 @@ type fieldsListTool struct{ svc *logicqueue.Service }
 func (t *fieldsListTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_fields_list",
 		mcp.WithDescription("Get the required fields configured for a Yandex Tracker queue."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 	)
 }
