@@ -11,9 +11,7 @@ func (s *Service) DeleteSafety() safety.Level { return safety.Destructive }
 
 // Delete deletes a file attached to an entity.
 func (s *Service) Delete(ctx context.Context, entityType, id, fileID string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.DeleteSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.DeleteEntityAttachment(ctx, entityType, id, fileID)
+	return safety.Guarded(s.guard, s.DeleteSafety(), func() (json.RawMessage, error) {
+		return s.client.DeleteEntityAttachment(ctx, entityType, id, fileID)
+	})
 }

@@ -11,9 +11,7 @@ func (s *Service) EditSafety() safety.Level { return safety.Write }
 
 // Edit edits a board column; version must match the board's current version.
 func (s *Service) Edit(ctx context.Context, boardID, columnID string, version int, fields map[string]any) (json.RawMessage, error) {
-	if err := s.guard.Check(s.EditSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.EditColumn(ctx, boardID, columnID, version, fields)
+	return safety.Guarded(s.guard, s.EditSafety(), func() (json.RawMessage, error) {
+		return s.client.EditColumn(ctx, boardID, columnID, version, fields)
+	})
 }

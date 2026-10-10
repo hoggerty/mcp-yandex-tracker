@@ -10,9 +10,7 @@ import (
 func (s *Service) AddCommentSafety() safety.Level { return safety.Write }
 
 func (s *Service) AddComment(ctx context.Context, issueKey, text string, summonees []string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.AddCommentSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.AddComment(ctx, issueKey, text, summonees)
+	return safety.Guarded(s.guard, s.AddCommentSafety(), func() (json.RawMessage, error) {
+		return s.client.AddComment(ctx, issueKey, text, summonees)
+	})
 }

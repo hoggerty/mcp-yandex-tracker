@@ -11,9 +11,7 @@ func (s *Service) ListSafety() safety.Level { return safety.ReadOnly }
 
 // List lists the columns of an agile board.
 func (s *Service) List(ctx context.Context, boardID string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.ListSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.ListColumns(ctx, boardID)
+	return safety.Guarded(s.guard, s.ListSafety(), func() (json.RawMessage, error) {
+		return s.client.ListColumns(ctx, boardID)
+	})
 }

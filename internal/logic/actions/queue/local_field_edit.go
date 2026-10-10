@@ -11,9 +11,7 @@ func (s *Service) LocalFieldEditSafety() safety.Level { return safety.Write }
 
 // LocalFieldEdit edits a queue-local issue field.
 func (s *Service) LocalFieldEdit(ctx context.Context, queueKey, fieldKey string, fields map[string]any) (json.RawMessage, error) {
-	if err := s.guard.Check(s.LocalFieldEditSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.EditLocalField(ctx, queueKey, fieldKey, fields)
+	return safety.Guarded(s.guard, s.LocalFieldEditSafety(), func() (json.RawMessage, error) {
+		return s.client.EditLocalField(ctx, queueKey, fieldKey, fields)
+	})
 }

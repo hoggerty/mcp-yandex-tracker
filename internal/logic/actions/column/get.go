@@ -11,9 +11,7 @@ func (s *Service) GetSafety() safety.Level { return safety.ReadOnly }
 
 // Get retrieves the parameters of a single board column.
 func (s *Service) Get(ctx context.Context, boardID, columnID string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.GetSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.GetColumn(ctx, boardID, columnID)
+	return safety.Guarded(s.guard, s.GetSafety(), func() (json.RawMessage, error) {
+		return s.client.GetColumn(ctx, boardID, columnID)
+	})
 }

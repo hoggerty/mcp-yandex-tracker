@@ -11,9 +11,7 @@ func (s *Service) GetSafety() safety.Level { return safety.ReadOnly }
 
 // Get retrieves the parameters of an auto action.
 func (s *Service) Get(ctx context.Context, queueKey, autoActionID string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.GetSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.GetAutoAction(ctx, queueKey, autoActionID)
+	return safety.Guarded(s.guard, s.GetSafety(), func() (json.RawMessage, error) {
+		return s.client.GetAutoAction(ctx, queueKey, autoActionID)
+	})
 }

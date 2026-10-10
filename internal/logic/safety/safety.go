@@ -73,3 +73,13 @@ func (g Guard) Check(level Level) error {
 	}
 	return nil
 }
+
+// Guarded runs fn if level is permitted by g's mode, otherwise it returns
+// ErrDisabled without calling fn.
+func Guarded[T any](g Guard, level Level, fn func() (T, error)) (T, error) {
+	if err := g.Check(level); err != nil {
+		var zero T
+		return zero, err
+	}
+	return fn()
+}

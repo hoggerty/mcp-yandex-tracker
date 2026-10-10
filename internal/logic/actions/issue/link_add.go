@@ -10,9 +10,7 @@ import (
 func (s *Service) LinkIssuesSafety() safety.Level { return safety.Write }
 
 func (s *Service) LinkIssues(ctx context.Context, issueKey, relationship, targetIssueKey string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.LinkIssuesSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.LinkIssues(ctx, issueKey, relationship, targetIssueKey)
+	return safety.Guarded(s.guard, s.LinkIssuesSafety(), func() (json.RawMessage, error) {
+		return s.client.LinkIssues(ctx, issueKey, relationship, targetIssueKey)
+	})
 }
