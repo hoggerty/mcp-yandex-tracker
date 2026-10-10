@@ -11,9 +11,7 @@ func (s *Service) CurrentSafety() safety.Level { return safety.ReadOnly }
 
 // Current retrieves the profile of the user that owns the API token.
 func (s *Service) Current(ctx context.Context) (json.RawMessage, error) {
-	if err := s.guard.Check(s.CurrentSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.CurrentUser(ctx)
+	return safety.Guarded(s.guard, s.CurrentSafety(), func() (json.RawMessage, error) {
+		return s.client.CurrentUser(ctx)
+	})
 }

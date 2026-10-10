@@ -11,9 +11,7 @@ func (s *Service) CategoryCreateSafety() safety.Level { return safety.Write }
 
 // CategoryCreate creates a new category for grouping global fields.
 func (s *Service) CategoryCreate(ctx context.Context, fields map[string]any) (json.RawMessage, error) {
-	if err := s.guard.Check(s.CategoryCreateSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.CreateFieldCategory(ctx, fields)
+	return safety.Guarded(s.guard, s.CategoryCreateSafety(), func() (json.RawMessage, error) {
+		return s.client.CreateFieldCategory(ctx, fields)
+	})
 }

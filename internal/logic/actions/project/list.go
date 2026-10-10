@@ -10,9 +10,7 @@ import (
 func (s *Service) ListSafety() safety.Level { return safety.ReadOnly }
 
 func (s *Service) List(ctx context.Context, expand string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.ListSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.ListProjects(ctx, expand)
+	return safety.Guarded(s.guard, s.ListSafety(), func() (json.RawMessage, error) {
+		return s.client.ListProjects(ctx, expand)
+	})
 }

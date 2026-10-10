@@ -11,9 +11,7 @@ func (s *Service) ListSafety() safety.Level { return safety.ReadOnly }
 
 // List returns an issue's links to objects in external applications.
 func (s *Service) List(ctx context.Context, issueKey string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.ListSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.ListExternalLinks(ctx, issueKey)
+	return safety.Guarded(s.guard, s.ListSafety(), func() (json.RawMessage, error) {
+		return s.client.ListExternalLinks(ctx, issueKey)
+	})
 }

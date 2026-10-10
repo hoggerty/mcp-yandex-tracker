@@ -11,9 +11,7 @@ func (s *Service) ChecklistItemDeleteSafety() safety.Level { return safety.Destr
 
 // ChecklistItemDelete deletes a single item from an issue's checklist.
 func (s *Service) ChecklistItemDelete(ctx context.Context, issueKey, itemID string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.ChecklistItemDeleteSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.DeleteChecklistItem(ctx, issueKey, itemID)
+	return safety.Guarded(s.guard, s.ChecklistItemDeleteSafety(), func() (json.RawMessage, error) {
+		return s.client.DeleteChecklistItem(ctx, issueKey, itemID)
+	})
 }

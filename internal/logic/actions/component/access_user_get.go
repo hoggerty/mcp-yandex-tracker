@@ -11,9 +11,7 @@ func (s *Service) AccessUserGetSafety() safety.Level { return safety.ReadOnly }
 
 // AccessUserGet retrieves a user's permissions for a component.
 func (s *Service) AccessUserGet(ctx context.Context, componentID, userID string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.AccessUserGetSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.GetComponentUserAccess(ctx, componentID, userID)
+	return safety.Guarded(s.guard, s.AccessUserGetSafety(), func() (json.RawMessage, error) {
+		return s.client.GetComponentUserAccess(ctx, componentID, userID)
+	})
 }

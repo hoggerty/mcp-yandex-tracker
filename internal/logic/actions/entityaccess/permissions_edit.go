@@ -11,9 +11,7 @@ func (s *Service) PermissionsEditSafety() safety.Level { return safety.Write }
 
 // PermissionsEdit changes an entity's access permissions (grant/revoke users, groups, roles).
 func (s *Service) PermissionsEdit(ctx context.Context, entityType, id string, body map[string]any) (json.RawMessage, error) {
-	if err := s.guard.Check(s.PermissionsEditSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.EditEntityPermissions(ctx, entityType, id, body)
+	return safety.Guarded(s.guard, s.PermissionsEditSafety(), func() (json.RawMessage, error) {
+		return s.client.EditEntityPermissions(ctx, entityType, id, body)
+	})
 }

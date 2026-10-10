@@ -11,9 +11,7 @@ func (s *Service) DeleteSafety() safety.Level { return safety.Destructive }
 
 // Delete deletes an agile board.
 func (s *Service) Delete(ctx context.Context, id string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.DeleteSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.DeleteBoard(ctx, id)
+	return safety.Guarded(s.guard, s.DeleteSafety(), func() (json.RawMessage, error) {
+		return s.client.DeleteBoard(ctx, id)
+	})
 }

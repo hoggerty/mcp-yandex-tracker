@@ -11,9 +11,7 @@ func (s *Service) ArchiveSafety() safety.Level { return safety.Destructive }
 
 // Archive archives a sprint. version is optional (0 to omit).
 func (s *Service) Archive(ctx context.Context, id string, version int) (json.RawMessage, error) {
-	if err := s.guard.Check(s.ArchiveSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.ArchiveSprint(ctx, id, version)
+	return safety.Guarded(s.guard, s.ArchiveSafety(), func() (json.RawMessage, error) {
+		return s.client.ArchiveSprint(ctx, id, version)
+	})
 }

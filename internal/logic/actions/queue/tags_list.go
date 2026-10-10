@@ -11,9 +11,7 @@ func (s *Service) TagsListSafety() safety.Level { return safety.ReadOnly }
 
 // TagsList retrieves the tags defined on a queue.
 func (s *Service) TagsList(ctx context.Context, queueKey string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.TagsListSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.GetQueueTags(ctx, queueKey)
+	return safety.Guarded(s.guard, s.TagsListSafety(), func() (json.RawMessage, error) {
+		return s.client.GetQueueTags(ctx, queueKey)
+	})
 }

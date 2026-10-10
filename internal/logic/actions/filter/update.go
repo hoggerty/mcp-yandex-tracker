@@ -11,9 +11,7 @@ func (s *Service) UpdateSafety() safety.Level { return safety.Write }
 
 // Update replaces a saved issue filter's name/filter/sorts.
 func (s *Service) Update(ctx context.Context, id string, fields map[string]any) (json.RawMessage, error) {
-	if err := s.guard.Check(s.UpdateSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.UpdateFilter(ctx, id, fields)
+	return safety.Guarded(s.guard, s.UpdateSafety(), func() (json.RawMessage, error) {
+		return s.client.UpdateFilter(ctx, id, fields)
+	})
 }

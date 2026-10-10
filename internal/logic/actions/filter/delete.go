@@ -11,9 +11,7 @@ func (s *Service) DeleteSafety() safety.Level { return safety.Destructive }
 
 // Delete deletes a saved issue filter.
 func (s *Service) Delete(ctx context.Context, id string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.DeleteSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.DeleteFilter(ctx, id)
+	return safety.Guarded(s.guard, s.DeleteSafety(), func() (json.RawMessage, error) {
+		return s.client.DeleteFilter(ctx, id)
+	})
 }

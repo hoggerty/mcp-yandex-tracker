@@ -10,9 +10,7 @@ import (
 func (s *Service) ListTransitionsSafety() safety.Level { return safety.ReadOnly }
 
 func (s *Service) ListTransitions(ctx context.Context, issueKey string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.ListTransitionsSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.ListTransitions(ctx, issueKey)
+	return safety.Guarded(s.guard, s.ListTransitionsSafety(), func() (json.RawMessage, error) {
+		return s.client.ListTransitions(ctx, issueKey)
+	})
 }

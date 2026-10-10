@@ -12,15 +12,13 @@ func (s *Service) SearchSafety() safety.Level { return safety.ReadOnly }
 
 // Search finds issues using either a query-language string or a structured filter.
 func (s *Service) Search(ctx context.Context, query string, filter map[string]any, orderBy string, perPage, page int) (json.RawMessage, error) {
-	if err := s.guard.Check(s.SearchSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.FindIssues(ctx, trackerapi.FindIssuesParams{
-		Query:   query,
-		Filter:  filter,
-		OrderBy: orderBy,
-		PerPage: perPage,
-		Page:    page,
+	return safety.Guarded(s.guard, s.SearchSafety(), func() (json.RawMessage, error) {
+		return s.client.FindIssues(ctx, trackerapi.FindIssuesParams{
+			Query:   query,
+			Filter:  filter,
+			OrderBy: orderBy,
+			PerPage: perPage,
+			Page:    page,
+		})
 	})
 }

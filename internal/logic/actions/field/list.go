@@ -11,9 +11,7 @@ func (s *Service) ListSafety() safety.Level { return safety.ReadOnly }
 
 // List returns all global fields of the organization.
 func (s *Service) List(ctx context.Context) (json.RawMessage, error) {
-	if err := s.guard.Check(s.ListSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.ListFields(ctx)
+	return safety.Guarded(s.guard, s.ListSafety(), func() (json.RawMessage, error) {
+		return s.client.ListFields(ctx)
+	})
 }

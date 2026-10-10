@@ -10,9 +10,7 @@ import (
 func (s *Service) DeleteSafety() safety.Level { return safety.Destructive }
 
 func (s *Service) Delete(ctx context.Context, gapIDs []string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.DeleteSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.DeleteGaps(ctx, gapIDs)
+	return safety.Guarded(s.guard, s.DeleteSafety(), func() (json.RawMessage, error) {
+		return s.client.DeleteGaps(ctx, gapIDs)
+	})
 }

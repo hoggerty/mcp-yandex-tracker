@@ -11,9 +11,7 @@ func (s *Service) PermissionsGetSafety() safety.Level { return safety.ReadOnly }
 
 // PermissionsGet retrieves an entity's resolved access permissions.
 func (s *Service) PermissionsGet(ctx context.Context, entityType, id string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.PermissionsGetSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.GetEntityPermissions(ctx, entityType, id)
+	return safety.Guarded(s.guard, s.PermissionsGetSafety(), func() (json.RawMessage, error) {
+		return s.client.GetEntityPermissions(ctx, entityType, id)
+	})
 }

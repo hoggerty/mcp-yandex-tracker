@@ -11,9 +11,7 @@ func (s *Service) QueueListSafety() safety.Level { return safety.ReadOnly }
 
 // QueueList lists the components of a queue.
 func (s *Service) QueueList(ctx context.Context, queueKey string) (json.RawMessage, error) {
-	if err := s.guard.Check(s.QueueListSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.ListQueueComponents(ctx, queueKey)
+	return safety.Guarded(s.guard, s.QueueListSafety(), func() (json.RawMessage, error) {
+		return s.client.ListQueueComponents(ctx, queueKey)
+	})
 }

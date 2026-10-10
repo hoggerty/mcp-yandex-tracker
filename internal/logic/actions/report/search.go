@@ -11,9 +11,7 @@ func (s *Service) SearchSafety() safety.Level { return safety.ReadOnly }
 
 // Search finds previously generated issue reports.
 func (s *Service) Search(ctx context.Context, filter map[string]any, perPage, page int) (json.RawMessage, error) {
-	if err := s.guard.Check(s.SearchSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.SearchReports(ctx, filter, perPage, page)
+	return safety.Guarded(s.guard, s.SearchSafety(), func() (json.RawMessage, error) {
+		return s.client.SearchReports(ctx, filter, perPage, page)
+	})
 }

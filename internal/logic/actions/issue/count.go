@@ -10,9 +10,7 @@ import (
 func (s *Service) CountSafety() safety.Level { return safety.ReadOnly }
 
 func (s *Service) Count(ctx context.Context, query string, filter map[string]any) (json.RawMessage, error) {
-	if err := s.guard.Check(s.CountSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.CountIssues(ctx, query, filter)
+	return safety.Guarded(s.guard, s.CountSafety(), func() (json.RawMessage, error) {
+		return s.client.CountIssues(ctx, query, filter)
+	})
 }

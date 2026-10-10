@@ -11,9 +11,7 @@ func (s *Service) EditSafety() safety.Level { return safety.Write }
 
 // Edit edits an issue type; version must match the issue type's current version.
 func (s *Service) Edit(ctx context.Context, id string, version int, fields map[string]any) (json.RawMessage, error) {
-	if err := s.guard.Check(s.EditSafety()); err != nil {
-		return nil, err
-	}
-
-	return s.client.EditIssueType(ctx, id, version, fields)
+	return safety.Guarded(s.guard, s.EditSafety(), func() (json.RawMessage, error) {
+		return s.client.EditIssueType(ctx, id, version, fields)
+	})
 }
