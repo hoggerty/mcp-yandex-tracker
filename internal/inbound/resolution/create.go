@@ -14,7 +14,6 @@ type createTool struct{ svc *logicresolution.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("resolution_create",
 		mcp.WithDescription("Create a new issue resolution (requires Administrator rights)."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Resolution definition, e.g. {\"key\": \"myResolution\", \"name\": {\"ru\": \"...\", \"en\": \"...\"}}")),
 	)
 }

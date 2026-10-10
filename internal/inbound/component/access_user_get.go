@@ -14,7 +14,6 @@ type accessUserGetTool struct{ svc *logiccomponent.Service }
 func (t *accessUserGetTool) Description() mcp.Tool {
 	return mcp.NewTool("component_access_user_get",
 		mcp.WithDescription("Get a user's permissions for a Yandex Tracker component."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("component_id", mcp.Required(), mcp.Description("Component id")),
 		mcp.WithString("user_id", mcp.Required(), mcp.Description("User id or login")),
 	)

@@ -8,9 +8,9 @@ import (
 
 func Tools(svc *logicentityaccess.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &accessGetTool{svc: svc}, Safety: logicentityaccess.AccessGetSafety},
-		{Tool: &permissionsGetTool{svc: svc}, Safety: logicentityaccess.PermissionsGetSafety},
-		{Tool: &accessEditTool{svc: svc}, Safety: logicentityaccess.AccessEditSafety},
-		{Tool: &permissionsEditTool{svc: svc}, Safety: logicentityaccess.PermissionsEditSafety},
+		{Tool: &accessGetTool{svc: svc}, Safety: svc.AccessGetSafety()},
+		{Tool: &permissionsGetTool{svc: svc}, Safety: svc.PermissionsGetSafety()},
+		{Tool: &accessEditTool{svc: svc}, Safety: svc.AccessEditSafety()},
+		{Tool: &permissionsEditTool{svc: svc}, Safety: svc.PermissionsEditSafety()},
 	}
 }

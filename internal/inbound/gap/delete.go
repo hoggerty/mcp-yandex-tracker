@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logicgap.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("gap_delete",
 		mcp.WithDescription("Delete employee absence records by id (up to 100 at once). Administrator only."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithArray("gap_ids", mcp.Required(), mcp.Description("Absence record ids to delete"), mcp.WithStringItems()),
 	)
 }

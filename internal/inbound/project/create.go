@@ -14,7 +14,6 @@ type createTool struct{ svc *logicproject.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("project_create",
 		mcp.WithDescription("Create a new Yandex Tracker project."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("e.g. {\"name\": \"...\", \"queues\": \"QUEUE_KEY\", \"description\": \"...\", \"lead\": \"login\", \"status\": \"DRAFT|IN_PROGRESS|LAUNCHED|POSTPONED\", \"startDate\": \"YYYY-MM-DD\", \"endDate\": \"YYYY-MM-DD\"}; name and queues are required")),
 	)
 }

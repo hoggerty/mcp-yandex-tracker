@@ -14,7 +14,6 @@ type listTool struct{ svc *logicentitycomment.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("entitycomment_list",
 		mcp.WithDescription("List comments on a Yandex Tracker entity."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithString("expand", mcp.Description("Optional: \"all\" or \"html\"")),

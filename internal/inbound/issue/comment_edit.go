@@ -14,7 +14,6 @@ type commentEditTool struct{ svc *logicissue.Service }
 func (t *commentEditTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_comment_edit",
 		mcp.WithDescription("Change the text of an existing Yandex Tracker issue comment."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("comment_id", mcp.Required(), mcp.Description("Comment id")),
 		mcp.WithString("text", mcp.Required(), mcp.Description("New comment text")),

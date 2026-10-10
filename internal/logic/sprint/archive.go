@@ -7,9 +7,13 @@ import (
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
 
-const ArchiveSafety = safety.Destructive
+func (s *Service) ArchiveSafety() safety.Level { return safety.Destructive }
 
 // Archive archives a sprint. version is optional (0 to omit).
 func (s *Service) Archive(ctx context.Context, id string, version int) (json.RawMessage, error) {
+	if err := s.guard.Check(s.ArchiveSafety()); err != nil {
+		return nil, err
+	}
+
 	return s.client.ArchiveSprint(ctx, id, version)
 }

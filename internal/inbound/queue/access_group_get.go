@@ -14,7 +14,6 @@ type accessGroupGetTool struct{ svc *logicqueue.Service }
 func (t *accessGroupGetTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_access_group_get",
 		mcp.WithDescription("Get a group's permissions for a Yandex Tracker queue."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("group_id", mcp.Required(), mcp.Description("Group id")),
 	)

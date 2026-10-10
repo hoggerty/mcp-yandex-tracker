@@ -14,7 +14,6 @@ type categoryEditTool struct{ svc *logicfield.Service }
 func (t *categoryEditTool) Description() mcp.Tool {
 	return mcp.NewTool("field_category_edit",
 		mcp.WithDescription("Edit a global-field category's name, description, or order."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Category id")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Category's current version (for optimistic locking)")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Parameters to set, e.g. {\"name\": {\"en\": \"...\", \"ru\": \"...\"}, \"order\": 400}")),

@@ -8,7 +8,7 @@ import (
 
 func Tools(svc *logicreport.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &createTool{svc: svc}, Safety: logicreport.CreateSafety},
-		{Tool: &searchTool{svc: svc}, Safety: logicreport.SearchSafety},
+		{Tool: &createTool{svc: svc}, Safety: svc.CreateSafety()},
+		{Tool: &searchTool{svc: svc}, Safety: svc.SearchSafety()},
 	}
 }

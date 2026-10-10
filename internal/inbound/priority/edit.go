@@ -14,7 +14,6 @@ type editTool struct{ svc *logicpriority.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("priority_edit",
 		mcp.WithDescription("Edit an issue priority (requires Administrator rights)."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Priority id or key")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Priority's current version (for optimistic locking)")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Parameters to set, e.g. {\"name\": {\"ru\": \"...\", \"en\": \"...\"}, \"description\": \"...\"}")),

@@ -14,7 +14,6 @@ type createTool struct{ svc *logicworkflow.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("workflow_create",
 		mcp.WithDescription("Create a new Yandex Tracker workflow."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Workflow definition, e.g. {\"name\": \"Design\", \"queue\": \"DESIGN\", \"initialAction\": {...}, \"steps\": [...]}")),
 	)
 }

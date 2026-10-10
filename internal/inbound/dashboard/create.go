@@ -14,7 +14,6 @@ type createTool struct{ svc *logicdashboard.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("dashboard_create",
 		mcp.WithDescription("Create a new Yandex Tracker dashboard."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Dashboard definition, e.g. {\"name\": \"...\", \"description\": \"...\"}")),
 	)
 }

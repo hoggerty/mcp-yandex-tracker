@@ -14,7 +14,6 @@ type editTool struct{ svc *logicissuetype.Service }
 func (t *editTool) Description() mcp.Tool {
 	return mcp.NewTool("issuetype_edit",
 		mcp.WithDescription("Edit an issue type (requires Administrator rights)."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Issue type id or key")),
 		mcp.WithNumber("version", mcp.Required(), mcp.Description("Issue type's current version (for optimistic locking)")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Parameters to set, e.g. {\"name\": {\"ru\": \"...\", \"en\": \"...\"}}")),

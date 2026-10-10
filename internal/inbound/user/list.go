@@ -14,7 +14,6 @@ type listTool struct{ svc *logicuser.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("users_list",
 		mcp.WithDescription("List users known to the Yandex Tracker organization."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithNumber("per_page", mcp.Description("Results per page")),
 		mcp.WithNumber("page", mcp.Description("Page number, starting at 1")),
 	)

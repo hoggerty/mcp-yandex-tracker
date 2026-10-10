@@ -8,10 +8,10 @@ import (
 
 func Tools(svc *logicmacro.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &listTool{svc: svc}, Safety: logicmacro.ListSafety},
-		{Tool: &getTool{svc: svc}, Safety: logicmacro.GetSafety},
-		{Tool: &createTool{svc: svc}, Safety: logicmacro.CreateSafety},
-		{Tool: &editTool{svc: svc}, Safety: logicmacro.EditSafety},
-		{Tool: &deleteTool{svc: svc}, Safety: logicmacro.DeleteSafety},
+		{Tool: &listTool{svc: svc}, Safety: svc.ListSafety()},
+		{Tool: &getTool{svc: svc}, Safety: svc.GetSafety()},
+		{Tool: &createTool{svc: svc}, Safety: svc.CreateSafety()},
+		{Tool: &editTool{svc: svc}, Safety: svc.EditSafety()},
+		{Tool: &deleteTool{svc: svc}, Safety: svc.DeleteSafety()},
 	}
 }

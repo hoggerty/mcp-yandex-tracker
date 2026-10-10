@@ -7,9 +7,13 @@ import (
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
 
-const UpdateSafety = safety.Destructive
+func (s *Service) UpdateSafety() safety.Level { return safety.Destructive }
 
 // Update starts a background operation that sets field values on many issues.
 func (s *Service) Update(ctx context.Context, issues []string, values map[string]any, notify bool) (json.RawMessage, error) {
+	if err := s.guard.Check(s.UpdateSafety()); err != nil {
+		return nil, err
+	}
+
 	return s.client.BulkUpdate(ctx, issues, values, notify)
 }

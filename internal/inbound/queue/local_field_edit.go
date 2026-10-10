@@ -14,7 +14,6 @@ type localFieldEditTool struct{ svc *logicqueue.Service }
 func (t *localFieldEditTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_local_field_edit",
 		mcp.WithDescription("Edit a queue-local issue field."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("field_key", mcp.Required(), mcp.Description("Local field key")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Parameters to set, e.g. {\"name\": {\"en\": \"...\", \"ru\": \"...\"}, \"order\": 102, \"readonly\": true}")),

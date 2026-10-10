@@ -14,7 +14,6 @@ type tagDeleteTool struct{ svc *logicqueue.Service }
 func (t *tagDeleteTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_tag_delete",
 		mcp.WithDescription("Remove a tag from a Yandex Tracker queue. Administrator-only; the tag must be unused by any issue."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("tag", mcp.Required(), mcp.Description("Tag name")),
 	)

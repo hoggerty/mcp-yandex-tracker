@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logicversion.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("version_delete",
 		mcp.WithDescription("Delete a Yandex Tracker version."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Version id")),
 	)
 }

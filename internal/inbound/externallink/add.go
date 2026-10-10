@@ -14,7 +14,6 @@ type addTool struct{ svc *logicexternallink.Service }
 func (t *addTool) Description() mcp.Tool {
 	return mcp.NewTool("externallink_add",
 		mcp.WithDescription("Link a Yandex Tracker issue to an object in an external application."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("relationship", mcp.Required(), mcp.Description("Relationship type, e.g. RELATES")),
 		mcp.WithString("key", mcp.Required(), mcp.Description("External object key")),

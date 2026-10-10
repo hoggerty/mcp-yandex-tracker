@@ -8,10 +8,10 @@ import (
 
 func Tools(svc *logicentitycomment.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &addTool{svc: svc}, Safety: logicentitycomment.AddSafety},
-		{Tool: &editTool{svc: svc}, Safety: logicentitycomment.EditSafety},
-		{Tool: &listTool{svc: svc}, Safety: logicentitycomment.ListSafety},
-		{Tool: &getTool{svc: svc}, Safety: logicentitycomment.GetSafety},
-		{Tool: &deleteTool{svc: svc}, Safety: logicentitycomment.DeleteSafety},
+		{Tool: &addTool{svc: svc}, Safety: svc.AddSafety()},
+		{Tool: &editTool{svc: svc}, Safety: svc.EditSafety()},
+		{Tool: &listTool{svc: svc}, Safety: svc.ListSafety()},
+		{Tool: &getTool{svc: svc}, Safety: svc.GetSafety()},
+		{Tool: &deleteTool{svc: svc}, Safety: svc.DeleteSafety()},
 	}
 }

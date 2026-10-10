@@ -14,7 +14,6 @@ type linkAddTool struct{ svc *logicissue.Service }
 func (t *linkAddTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_link_add",
 		mcp.WithDescription("Create a link between two Yandex Tracker issues."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Source issue key")),
 		mcp.WithString("relationship", mcp.Required(), mcp.Description("Relationship type, e.g. \"relates\", \"is dependent by\", \"depends on\"")),
 		mcp.WithString("target_issue_key", mcp.Required(), mcp.Description("Issue key to link to")),

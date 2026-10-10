@@ -14,7 +14,6 @@ type cycleTimeWidgetCreateTool struct{ svc *logicdashboard.Service }
 func (t *cycleTimeWidgetCreateTool) Description() mcp.Tool {
 	return mcp.NewTool("dashboard_cycle_time_widget_create",
 		mcp.WithDescription("Create a \"Cycle time\" widget on a Yandex Tracker dashboard."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("dashboard_id", mcp.Required(), mcp.Description("Dashboard id")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Widget definition, e.g. {\"name\": \"...\", \"filter\": {...}}")),
 	)

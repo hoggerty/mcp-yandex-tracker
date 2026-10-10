@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logicexternallink.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("externallink_delete",
 		mcp.WithDescription("Remove a Yandex Tracker issue's link to an external application object."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("link_id", mcp.Required(), mcp.Description("External link id")),
 	)

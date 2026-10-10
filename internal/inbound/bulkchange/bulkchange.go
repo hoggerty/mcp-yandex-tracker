@@ -8,10 +8,10 @@ import (
 
 func Tools(svc *logicbulkchange.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &moveTool{svc: svc}, Safety: logicbulkchange.MoveSafety},
-		{Tool: &updateTool{svc: svc}, Safety: logicbulkchange.UpdateSafety},
-		{Tool: &transitionTool{svc: svc}, Safety: logicbulkchange.TransitionSafety},
-		{Tool: &statusTool{svc: svc}, Safety: logicbulkchange.StatusSafety},
-		{Tool: &errorsTool{svc: svc}, Safety: logicbulkchange.ErrorsSafety},
+		{Tool: &moveTool{svc: svc}, Safety: svc.MoveSafety()},
+		{Tool: &updateTool{svc: svc}, Safety: svc.UpdateSafety()},
+		{Tool: &transitionTool{svc: svc}, Safety: svc.TransitionSafety()},
+		{Tool: &statusTool{svc: svc}, Safety: svc.StatusSafety()},
+		{Tool: &errorsTool{svc: svc}, Safety: svc.ErrorsSafety()},
 	}
 }

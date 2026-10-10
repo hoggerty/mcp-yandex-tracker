@@ -16,7 +16,6 @@ type listTool struct {
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("entityattachment_list",
 		mcp.WithDescription("List attachments on a Yandex Tracker entity (metadata only)."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 	)

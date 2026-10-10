@@ -14,7 +14,6 @@ type listTool struct{ svc *logicresolution.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("resolution_list",
 		mcp.WithDescription("List the issue resolutions available in the Yandex Tracker organization."),
-		mcp.WithReadOnlyHintAnnotation(true),
 	)
 }
 

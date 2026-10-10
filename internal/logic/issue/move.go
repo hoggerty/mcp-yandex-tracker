@@ -7,9 +7,13 @@ import (
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 )
 
-const MoveSafety = safety.Write
+func (s *Service) MoveSafety() safety.Level { return safety.Write }
 
 // Move moves an issue to another queue.
 func (s *Service) Move(ctx context.Context, issueKey, targetQueue string, notify, notifyAuthor, moveAllFields, initialStatus bool, fields map[string]any) (json.RawMessage, error) {
+	if err := s.guard.Check(s.MoveSafety()); err != nil {
+		return nil, err
+	}
+
 	return s.client.MoveIssue(ctx, issueKey, targetQueue, notify, notifyAuthor, moveAllFields, initialStatus, fields)
 }

@@ -26,6 +26,7 @@ import (
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/queue"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/report"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/resolution"
+	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/sprint"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/status"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/trigger"
@@ -71,39 +72,39 @@ type Services struct {
 	Gap              *gap.Service
 }
 
-func New(client *trackerapi.Client) *Services {
+func New(client *trackerapi.Client, guard safety.Guard) *Services {
 	return &Services{
-		Issue:            issue.New(client),
-		Queue:            queue.New(client),
-		User:             user.New(client),
-		Board:            board.New(client),
-		Report:           report.New(client),
-		Worklog:          worklog.New(client),
-		ExternalLink:     externallink.New(client),
-		BulkChange:       bulkchange.New(client),
-		Field:            field.New(client),
-		Filter:           filter.New(client),
-		Workflow:         workflow.New(client),
-		AutoAction:       autoaction.New(client),
-		Trigger:          trigger.New(client),
-		Macro:            macro.New(client),
-		Component:        component.New(client),
-		Version:          version.New(client),
-		Column:           column.New(client),
-		Sprint:           sprint.New(client),
-		Dashboard:        dashboard.New(client),
-		IssueType:        issuetype.New(client),
-		Status:           status.New(client),
-		Resolution:       resolution.New(client),
-		Priority:         priority.New(client),
-		Entity:           entity.New(client),
-		EntityComment:    entitycomment.New(client),
-		EntityChecklist:  entitychecklist.New(client),
-		EntityAttachment: entityattachment.New(client),
-		EntityLink:       entitylink.New(client),
-		EntityAccess:     entityaccess.New(client),
-		Project:          project.New(client),
-		ImportData:       importdata.New(client),
-		Gap:              gap.New(client),
+		Issue:            issue.New(client, guard),
+		Queue:            queue.New(client, guard),
+		User:             user.New(client, guard),
+		Board:            board.New(client, guard),
+		Report:           report.New(client, guard),
+		Worklog:          worklog.New(client, guard),
+		ExternalLink:     externallink.New(client, guard),
+		BulkChange:       bulkchange.New(client, guard),
+		Field:            field.New(client, guard),
+		Filter:           filter.New(client, guard),
+		Workflow:         workflow.New(client, guard),
+		AutoAction:       autoaction.New(client, guard),
+		Trigger:          trigger.New(client, guard),
+		Macro:            macro.New(client, guard),
+		Component:        component.New(client, guard),
+		Version:          version.New(client, guard),
+		Column:           column.New(client, guard),
+		Sprint:           sprint.New(client, guard),
+		Dashboard:        dashboard.New(client, guard),
+		IssueType:        issuetype.New(client, guard),
+		Status:           status.New(client, guard),
+		Resolution:       resolution.New(client, guard),
+		Priority:         priority.New(client, guard),
+		Entity:           entity.New(client, guard),
+		EntityComment:    entitycomment.New(client, guard),
+		EntityChecklist:  entitychecklist.New(client, guard),
+		EntityAttachment: entityattachment.New(client, guard),
+		EntityLink:       entitylink.New(client, guard),
+		EntityAccess:     entityaccess.New(client, guard),
+		Project:          project.New(client, guard),
+		ImportData:       importdata.New(client, guard),
+		Gap:              gap.New(client, guard),
 	}
 }

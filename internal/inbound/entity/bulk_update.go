@@ -14,7 +14,6 @@ type bulkUpdateTool struct{ svc *logicentity.Service }
 func (t *bulkUpdateTool) Description() mcp.Tool {
 	return mcp.NewTool("entity_bulk_update",
 		mcp.WithDescription("Bulk-edit fields, comment, or links on multiple Yandex Tracker entities of the same type."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithObject("body", mcp.Required(), mcp.Description("e.g. {\"metaEntities\": [\"ID1\", \"ID2\"], \"values\": {\"fields\": {\"FIELD_KEY\": \"VALUE\"}, \"comment\": \"...\", \"links\": [...]}}")),
 	)

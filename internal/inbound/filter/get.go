@@ -14,7 +14,6 @@ type getTool struct{ svc *logicfilter.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("filter_get",
 		mcp.WithDescription("Get a saved issue filter by id."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Filter id")),
 	)
 }

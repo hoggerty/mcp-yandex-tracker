@@ -14,7 +14,6 @@ type getTool struct{ svc *logicissue.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_get",
 		mcp.WithDescription("Retrieve a Yandex Tracker issue by its key, e.g. QUEUE-123."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 	)
 }

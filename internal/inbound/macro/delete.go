@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logicmacro.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("macro_delete",
 		mcp.WithDescription("Delete a macro from a Yandex Tracker queue."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("macro_id", mcp.Required(), mcp.Description("Macro id")),
 	)

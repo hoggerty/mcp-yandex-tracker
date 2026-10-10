@@ -14,7 +14,6 @@ type getTool struct{ svc *logicuser.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("user_get",
 		mcp.WithDescription("Get a single Yandex Tracker user by login or numeric id."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("User login or numeric id (for a purely numeric login, use \"login:12345\")")),
 	)
 }

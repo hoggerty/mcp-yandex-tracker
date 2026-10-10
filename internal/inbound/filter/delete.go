@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logicfilter.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("filter_delete",
 		mcp.WithDescription("Delete a saved issue filter."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Filter id")),
 	)
 }

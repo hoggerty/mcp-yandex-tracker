@@ -14,7 +14,6 @@ type getTool struct{ svc *logicproject.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("project_get",
 		mcp.WithDescription("Get a Yandex Tracker project by id."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Project id")),
 		mcp.WithString("expand", mcp.Description("Optional: \"queues\"")),
 	)

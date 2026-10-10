@@ -14,7 +14,6 @@ type queueListTool struct{ svc *logiccomponent.Service }
 func (t *queueListTool) Description() mcp.Tool {
 	return mcp.NewTool("component_queue_list",
 		mcp.WithDescription("List the components of a Yandex Tracker queue."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 	)
 }

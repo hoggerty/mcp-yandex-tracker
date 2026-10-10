@@ -14,7 +14,6 @@ type getTool struct{ svc *logicqueue.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_get",
 		mcp.WithDescription("Retrieve a Yandex Tracker queue by its key."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue_key", mcp.Required(), mcp.Description("Queue key, e.g. QUEUE")),
 	)
 }

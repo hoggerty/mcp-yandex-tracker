@@ -14,7 +14,6 @@ type itemDeleteTool struct{ svc *logicentitychecklist.Service }
 func (t *itemDeleteTool) Description() mcp.Tool {
 	return mcp.NewTool("entitychecklist_item_delete",
 		mcp.WithDescription("Delete a single checklist item from a Yandex Tracker entity."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithString("item_id", mcp.Required(), mcp.Description("Checklist item id")),

@@ -14,7 +14,6 @@ type getTool struct{ svc *logicversion.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("version_get",
 		mcp.WithDescription("Get the parameters of a single Yandex Tracker version."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Version id")),
 	)
 }

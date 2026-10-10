@@ -14,7 +14,6 @@ type transitionTool struct{ svc *logicbulkchange.Service }
 func (t *transitionTool) Description() mcp.Tool {
 	return mcp.NewTool("bulkchange_transition",
 		mcp.WithDescription("Start a background operation that executes a workflow transition on many Yandex Tracker issues (up to 10000 issues)."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("transition", mcp.Required(), mcp.Description("Transition id, see issue_transitions_list")),
 		mcp.WithArray("issues", mcp.Required(), mcp.Description("Issue keys to transition"), mcp.WithStringItems()),
 		mcp.WithObject("values", mcp.Description("Additional field values to set after the transition")),

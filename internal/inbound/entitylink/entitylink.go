@@ -8,8 +8,8 @@ import (
 
 func Tools(svc *logicentitylink.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &addTool{svc: svc}, Safety: logicentitylink.AddSafety},
-		{Tool: &listTool{svc: svc}, Safety: logicentitylink.ListSafety},
-		{Tool: &deleteTool{svc: svc}, Safety: logicentitylink.DeleteSafety},
+		{Tool: &addTool{svc: svc}, Safety: svc.AddSafety()},
+		{Tool: &listTool{svc: svc}, Safety: svc.ListSafety()},
+		{Tool: &deleteTool{svc: svc}, Safety: svc.DeleteSafety()},
 	}
 }

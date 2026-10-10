@@ -14,7 +14,6 @@ type localFieldCreateTool struct{ svc *logicqueue.Service }
 func (t *localFieldCreateTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_local_field_create",
 		mcp.WithDescription("Create a queue-local issue field."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Field definition, e.g. {\"id\": \"myField\", \"name\": {\"en\": \"My Field\", \"ru\": \"Моё поле\"}, \"category\": \"<category id>\", \"type\": \"ru.yandex.startrek.core.fields.StringFieldType\"}")),
 	)

@@ -14,7 +14,6 @@ type queuesListTool struct{ svc *logicproject.Service }
 func (t *queuesListTool) Description() mcp.Tool {
 	return mcp.NewTool("project_queues_list",
 		mcp.WithDescription("List the queues attached to a Yandex Tracker project."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Project id")),
 		mcp.WithString("expand", mcp.Description("Optional: all, projects, components, versions, types, team, workflows, fields")),
 	)

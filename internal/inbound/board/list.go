@@ -14,7 +14,6 @@ type listTool struct{ svc *logicboard.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("boards_list",
 		mcp.WithDescription("List Yandex Tracker agile boards visible to the current user."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithNumber("per_page", mcp.Description("Results per page, max 500")),
 		mcp.WithNumber("id", mcp.Description("Last board ID from the previous page; omit for the first page")),
 	)

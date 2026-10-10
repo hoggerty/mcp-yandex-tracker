@@ -14,7 +14,6 @@ type deleteTool struct{ svc *logicworkflow.Service }
 func (t *deleteTool) Description() mcp.Tool {
 	return mcp.NewTool("workflow_delete",
 		mcp.WithDescription("Delete a Yandex Tracker workflow."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Workflow id")),
 	)
 }

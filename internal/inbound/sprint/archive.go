@@ -14,7 +14,6 @@ type archiveTool struct{ svc *logicsprint.Service }
 func (t *archiveTool) Description() mcp.Tool {
 	return mcp.NewTool("sprint_archive",
 		mcp.WithDescription("Archive a Yandex Tracker sprint."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Sprint id")),
 		mcp.WithNumber("version", mcp.Description("Sprint's current version (for optimistic locking); omit to skip the check")),
 	)

@@ -14,7 +14,6 @@ type commentReactionAddTool struct{ svc *logicissue.Service }
 func (t *commentReactionAddTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_comment_reaction_add",
 		mcp.WithDescription("Add a reaction to a Yandex Tracker issue comment."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("comment_id", mcp.Required(), mcp.Description("Comment id")),
 		mcp.WithString("reaction", mcp.Required(), mcp.Description("One of LIKE, DISLIKE, LAUGH, HOORAY, CONFUSED, HEART, ROCKET, EYES, FIRE, OK, FACEPALM, CHECK")),

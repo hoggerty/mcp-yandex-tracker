@@ -14,7 +14,6 @@ type addTool struct{ svc *logicentitylink.Service }
 func (t *addTool) Description() mcp.Tool {
 	return mcp.NewTool("entitylink_add",
 		mcp.WithDescription("Add one or more links from a Yandex Tracker entity to other entities or issues."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithObject("link", mcp.Description("Single link object, e.g. {\"relationship\": \"works towards\", \"entity\": \"ENTITY_ID\"}. Use this or links, not both.")),

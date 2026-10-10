@@ -8,13 +8,13 @@ import (
 
 func Tools(svc *logiccomponent.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &listTool{svc: svc}, Safety: logiccomponent.ListSafety},
-		{Tool: &queueListTool{svc: svc}, Safety: logiccomponent.QueueListSafety},
-		{Tool: &getTool{svc: svc}, Safety: logiccomponent.GetSafety},
-		{Tool: &createTool{svc: svc}, Safety: logiccomponent.CreateSafety},
-		{Tool: &editTool{svc: svc}, Safety: logiccomponent.EditSafety},
-		{Tool: &deleteTool{svc: svc}, Safety: logiccomponent.DeleteSafety},
-		{Tool: &accessUserGetTool{svc: svc}, Safety: logiccomponent.AccessUserGetSafety},
-		{Tool: &accessGroupGetTool{svc: svc}, Safety: logiccomponent.AccessGroupGetSafety},
+		{Tool: &listTool{svc: svc}, Safety: svc.ListSafety()},
+		{Tool: &queueListTool{svc: svc}, Safety: svc.QueueListSafety()},
+		{Tool: &getTool{svc: svc}, Safety: svc.GetSafety()},
+		{Tool: &createTool{svc: svc}, Safety: svc.CreateSafety()},
+		{Tool: &editTool{svc: svc}, Safety: svc.EditSafety()},
+		{Tool: &deleteTool{svc: svc}, Safety: svc.DeleteSafety()},
+		{Tool: &accessUserGetTool{svc: svc}, Safety: svc.AccessUserGetSafety()},
+		{Tool: &accessGroupGetTool{svc: svc}, Safety: svc.AccessGroupGetSafety()},
 	}
 }

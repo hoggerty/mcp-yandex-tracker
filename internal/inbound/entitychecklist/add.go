@@ -14,7 +14,6 @@ type addTool struct{ svc *logicentitychecklist.Service }
 func (t *addTool) Description() mcp.Tool {
 	return mcp.NewTool("entitychecklist_add",
 		mcp.WithDescription("Add a checklist item to a Yandex Tracker entity."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("entity_type", mcp.Required(), mcp.Description("Entity type: project, portfolio, or goal")),
 		mcp.WithString("id", mcp.Required(), mcp.Description("Entity id or shortId")),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("e.g. {\"text\": \"...\", \"checked\": false, \"assignee\": \"login\"}")),

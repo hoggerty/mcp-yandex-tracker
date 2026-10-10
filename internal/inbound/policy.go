@@ -5,21 +5,22 @@ import (
 
 	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
 	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
-	"github.com/hoggerty/yandex-tracker-mcp/internal/wire/config"
 )
 
 // Policy decides which registered tools are actually exposed to MCP
 // clients. It is applied once, at startup, before AddTools — an entry that
 // Policy excludes is absent from the server's tool list entirely, not
-// merely hinted at as dangerous.
+// merely hinted at as dangerous. Mode is the same type the logic layer uses
+// to guard operation execution (safety.Guard), so a mode-disabled tool is
+// unavailable at both layers from a single source of truth.
 type Policy struct {
-	Mode          config.ToolsMode
+	Mode          safety.Mode
 	DisabledTools []string
 }
 
 // Allow reports whether e should be registered under this policy.
 func (p Policy) Allow(e tool.Entry) bool {
-	if !modeAllows(p.Mode, e.Safety) {
+	if !p.Mode.Allows(e.Safety) {
 		return false
 	}
 	name := e.Tool.Description().Name
@@ -29,18 +30,6 @@ func (p Policy) Allow(e tool.Entry) bool {
 		}
 	}
 	return true
-}
-
-// modeAllows applies the mode-level rule only, ignoring DisabledTools.
-func modeAllows(mode config.ToolsMode, level safety.Level) bool {
-	switch mode {
-	case config.ToolsModeReadOnly:
-		return level == safety.ReadOnly
-	case config.ToolsModeFull:
-		return true
-	default: // config.ToolsModeReadWrite
-		return level != safety.Destructive
-	}
 }
 
 // Apply filters entries down to those allowed by the policy.

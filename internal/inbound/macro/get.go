@@ -14,7 +14,6 @@ type getTool struct{ svc *logicmacro.Service }
 func (t *getTool) Description() mcp.Tool {
 	return mcp.NewTool("macro_get",
 		mcp.WithDescription("Get the parameters of a single Yandex Tracker macro."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithString("macro_id", mcp.Required(), mcp.Description("Macro id")),
 	)

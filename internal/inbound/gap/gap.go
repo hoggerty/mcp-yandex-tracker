@@ -8,8 +8,8 @@ import (
 
 func Tools(svc *logicgap.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &createTool{svc: svc}, Safety: logicgap.CreateSafety},
-		{Tool: &searchTool{svc: svc}, Safety: logicgap.SearchSafety},
-		{Tool: &deleteTool{svc: svc}, Safety: logicgap.DeleteSafety},
+		{Tool: &createTool{svc: svc}, Safety: svc.CreateSafety()},
+		{Tool: &searchTool{svc: svc}, Safety: svc.SearchSafety()},
+		{Tool: &deleteTool{svc: svc}, Safety: svc.DeleteSafety()},
 	}
 }

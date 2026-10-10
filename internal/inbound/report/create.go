@@ -14,7 +14,6 @@ type createTool struct{ svc *logicreport.Service }
 func (t *createTool) Description() mcp.Tool {
 	return mcp.NewTool("report_create",
 		mcp.WithDescription("Generate a Yandex Tracker issue report (e.g. an xlsx/csv/xml export of a filtered issue list)."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithObject("fields", mcp.Required(), mcp.Description("Report fields, e.g. {\"summary\": \"...\", \"parameters\": {\"type\": \"issueFilterExport\", \"format\": \"xlsx\", \"filter\": {\"query\": \"...\"}}}")),
 	)
 }

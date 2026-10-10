@@ -14,7 +14,6 @@ type moveTool struct{ svc *logicbulkchange.Service }
 func (t *moveTool) Description() mcp.Tool {
 	return mcp.NewTool("bulkchange_move",
 		mcp.WithDescription("Start a background operation that moves many Yandex Tracker issues to another queue (up to 10000 issues)."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Destination queue key")),
 		mcp.WithArray("issues", mcp.Required(), mcp.Description("Issue keys to move"), mcp.WithStringItems()),
 		mcp.WithObject("values", mcp.Description("Additional field values to set during the move")),
@@ -37,6 +36,5 @@ func (t *moveTool) Handle(ctx context.Context, req mcp.CallToolRequest) (*mcp.Ca
 	return result.JSON(t.svc.Move(ctx, queue, issues, values,
 		req.GetBool("move_all_fields", false),
 		req.GetBool("initial_status", false),
-		req.GetBool("notify", false),
-	))
+		req.GetBool("notify", false)))
 }

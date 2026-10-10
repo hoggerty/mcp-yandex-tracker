@@ -14,7 +14,6 @@ type listTool struct{ svc *logiccomponent.Service }
 func (t *listTool) Description() mcp.Tool {
 	return mcp.NewTool("component_list",
 		mcp.WithDescription("List all components in the organization."),
-		mcp.WithReadOnlyHintAnnotation(true),
 	)
 }
 

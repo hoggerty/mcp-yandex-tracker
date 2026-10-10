@@ -14,7 +14,6 @@ type checklistItemDeleteTool struct{ svc *logicissue.Service }
 func (t *checklistItemDeleteTool) Description() mcp.Tool {
 	return mcp.NewTool("issue_checklist_item_delete",
 		mcp.WithDescription("Delete a single item from a Yandex Tracker issue's checklist."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("issue_key", mcp.Required(), mcp.Description("Issue key, e.g. QUEUE-123")),
 		mcp.WithString("item_id", mcp.Required(), mcp.Description("Checklist item id")),
 	)

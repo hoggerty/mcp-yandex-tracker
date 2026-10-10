@@ -8,9 +8,9 @@ import (
 
 func Tools(svc *logicautoaction.Service) []tool.Entry {
 	return []tool.Entry{
-		{Tool: &createTool{svc: svc}, Safety: logicautoaction.CreateSafety},
-		{Tool: &getTool{svc: svc}, Safety: logicautoaction.GetSafety},
-		{Tool: &logsListTool{svc: svc}, Safety: logicautoaction.LogsListSafety},
-		{Tool: &logGetTool{svc: svc}, Safety: logicautoaction.LogGetSafety},
+		{Tool: &createTool{svc: svc}, Safety: svc.CreateSafety()},
+		{Tool: &getTool{svc: svc}, Safety: svc.GetSafety()},
+		{Tool: &logsListTool{svc: svc}, Safety: svc.LogsListSafety()},
+		{Tool: &logGetTool{svc: svc}, Safety: svc.LogGetSafety()},
 	}
 }

@@ -14,7 +14,6 @@ type restoreTool struct{ svc *logicqueue.Service }
 func (t *restoreTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_restore",
 		mcp.WithDescription("Restore a previously deleted Yandex Tracker queue. Administrator-only."),
-		mcp.WithDestructiveHintAnnotation(false),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 	)
 }

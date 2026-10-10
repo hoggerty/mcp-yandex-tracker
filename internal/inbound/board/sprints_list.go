@@ -14,7 +14,6 @@ type sprintsListTool struct{ svc *logicboard.Service }
 func (t *sprintsListTool) Description() mcp.Tool {
 	return mcp.NewTool("board_sprints_list",
 		mcp.WithDescription("List sprints that belong to a Yandex Tracker agile board."),
-		mcp.WithReadOnlyHintAnnotation(true),
 		mcp.WithString("board_id", mcp.Required(), mcp.Description("Board ID")),
 	)
 }

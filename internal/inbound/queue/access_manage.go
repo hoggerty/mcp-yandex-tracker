@@ -14,7 +14,6 @@ type accessManageTool struct{ svc *logicqueue.Service }
 func (t *accessManageTool) Description() mcp.Tool {
 	return mcp.NewTool("queue_access_manage",
 		mcp.WithDescription("Grant or revoke queue-level permissions (create/write/read/grant) for users, groups, or roles."),
-		mcp.WithDestructiveHintAnnotation(true),
 		mcp.WithString("queue", mcp.Required(), mcp.Description("Queue key or id")),
 		mcp.WithObject("permissions", mcp.Required(), mcp.Description("Permission changes, e.g. {\"write\": {\"users\": {\"add\": [\"user1\"], \"remove\": [\"user2\"]}}}")),
 	)
