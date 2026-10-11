@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logictrigger "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/trigger"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logictrigger "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/trigger"
 )
 
 type LogsListTool struct{ Svc *logictrigger.Service }

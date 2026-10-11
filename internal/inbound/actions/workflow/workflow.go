@@ -2,8 +2,8 @@
 package workflow
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicworkflow "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/workflow"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicworkflow "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/workflow"
 )
 
 func Tools(svc *logicworkflow.Service) []tool.Entry {

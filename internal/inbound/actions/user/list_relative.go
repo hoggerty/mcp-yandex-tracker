@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicuser "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/user"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicuser "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/user"
 )
 
 type ListRelativeTool struct{ Svc *logicuser.Service }

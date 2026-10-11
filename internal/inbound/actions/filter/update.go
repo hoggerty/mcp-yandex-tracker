@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicfilter "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/filter"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicfilter "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/filter"
 )
 
 type UpdateTool struct{ Svc *logicfilter.Service }

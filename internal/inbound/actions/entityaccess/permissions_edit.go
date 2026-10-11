@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicentityaccess "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/entityaccess"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicentityaccess "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/entityaccess"
 )
 
 type PermissionsEditTool struct{ Svc *logicentityaccess.Service }

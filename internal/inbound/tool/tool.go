@@ -7,7 +7,7 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/logic/safety"
 )
 
 // Tool is a single Yandex Tracker operation exposed as an MCP tool. Each

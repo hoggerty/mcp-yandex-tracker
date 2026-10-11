@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/logic/safety"
 )
 
 func (s *Service) CommentSafety() safety.Level { return safety.Write }

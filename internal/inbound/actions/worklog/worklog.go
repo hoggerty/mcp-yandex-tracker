@@ -2,8 +2,8 @@
 package worklog
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicworklog "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/worklog"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicworklog "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/worklog"
 )
 
 func Tools(svc *logicworklog.Service) []tool.Entry {

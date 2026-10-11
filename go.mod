@@ -1,4 +1,4 @@
-module github.com/hoggerty/yandex-tracker-mcp
+module github.com/hoggerty/mcp-yandex-tracker
 
 go 1.26.4
 

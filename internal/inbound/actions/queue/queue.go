@@ -2,8 +2,8 @@
 package queue
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicqueue "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/queue"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicqueue "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/queue"
 )
 
 func Tools(svc *logicqueue.Service) []tool.Entry {

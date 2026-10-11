@@ -2,8 +2,8 @@
 package entitychecklist
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicentitychecklist "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/entitychecklist"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicentitychecklist "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/entitychecklist"
 )
 
 func Tools(svc *logicentitychecklist.Service) []tool.Entry {

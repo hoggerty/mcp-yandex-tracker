@@ -2,8 +2,8 @@
 package component
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logiccomponent "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/component"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logiccomponent "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/component"
 )
 
 func Tools(svc *logiccomponent.Service) []tool.Entry {

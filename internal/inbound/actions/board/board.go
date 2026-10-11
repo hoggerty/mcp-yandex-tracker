@@ -2,8 +2,8 @@
 package board
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicboard "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/board"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicboard "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/board"
 )
 
 func Tools(svc *logicboard.Service) []tool.Entry {

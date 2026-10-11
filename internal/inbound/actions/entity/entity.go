@@ -2,8 +2,8 @@
 package entity
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicentity "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/entity"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicentity "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/entity"
 )
 
 func Tools(svc *logicentity.Service) []tool.Entry {

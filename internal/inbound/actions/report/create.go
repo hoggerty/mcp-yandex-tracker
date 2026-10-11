@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicreport "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/report"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicreport "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/report"
 )
 
 type CreateTool struct{ Svc *logicreport.Service }

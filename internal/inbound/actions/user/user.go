@@ -2,8 +2,8 @@
 package user
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicuser "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/user"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicuser "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/user"
 )
 
 func Tools(svc *logicuser.Service) []tool.Entry {

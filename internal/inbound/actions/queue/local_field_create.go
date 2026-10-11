@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicqueue "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/queue"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicqueue "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/queue"
 )
 
 type LocalFieldCreateTool struct{ Svc *logicqueue.Service }

@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicissue "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/issue"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicissue "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/issue"
 )
 
 type SearchTool struct{ Svc *logicissue.Service }

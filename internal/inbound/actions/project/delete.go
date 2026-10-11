@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicproject "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/project"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicproject "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/project"
 )
 
 type DeleteTool struct{ Svc *logicproject.Service }

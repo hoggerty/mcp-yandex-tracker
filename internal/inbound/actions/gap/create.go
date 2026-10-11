@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicgap "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/gap"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicgap "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/gap"
 )
 
 type CreateTool struct{ Svc *logicgap.Service }

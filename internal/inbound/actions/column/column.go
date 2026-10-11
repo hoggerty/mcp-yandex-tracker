@@ -2,8 +2,8 @@
 package column
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logiccolumn "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/column"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logiccolumn "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/column"
 )
 
 func Tools(svc *logiccolumn.Service) []tool.Entry {

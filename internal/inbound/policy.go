@@ -3,8 +3,8 @@ package inbound
 import (
 	"path"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/logic/safety"
 )
 
 // Policy decides which registered tools are actually exposed to MCP

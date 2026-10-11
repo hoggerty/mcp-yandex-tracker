@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicversion "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/version"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicversion "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/version"
 )
 
 type QueueListTool struct{ Svc *logicversion.Service }

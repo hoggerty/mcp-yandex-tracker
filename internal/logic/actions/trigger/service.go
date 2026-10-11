@@ -2,8 +2,8 @@
 package trigger
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
-	"github.com/hoggerty/yandex-tracker-mcp/internal/outbound/trackerapi"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/logic/safety"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/outbound/trackerapi"
 )
 
 type Service struct {

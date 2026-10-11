@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicissuetype "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/issuetype"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicissuetype "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/issuetype"
 )
 
 type EditTool struct{ Svc *logicissuetype.Service }

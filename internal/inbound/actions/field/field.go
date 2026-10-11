@@ -2,8 +2,8 @@
 package field
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicfield "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/field"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicfield "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/field"
 )
 
 func Tools(svc *logicfield.Service) []tool.Entry {

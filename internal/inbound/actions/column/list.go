@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logiccolumn "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/column"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logiccolumn "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/column"
 )
 
 type ListTool struct{ Svc *logiccolumn.Service }

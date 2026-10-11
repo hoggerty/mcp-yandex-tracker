@@ -1,6 +1,6 @@
 BINARY := yandex-tracker-mcp
 VERSION ?= $(shell git describe --tags --always --dirty)
-LDFLAGS := -s -w -X github.com/hoggerty/yandex-tracker-mcp/cmd.VERSION=$(VERSION)
+LDFLAGS := -s -w -X github.com/hoggerty/mcp-yandex-tracker/cmd.VERSION=$(VERSION)
 
 .PHONY: build
 build:

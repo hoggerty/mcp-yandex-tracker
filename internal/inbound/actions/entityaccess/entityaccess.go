@@ -2,8 +2,8 @@
 package entityaccess
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicentityaccess "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/entityaccess"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicentityaccess "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/entityaccess"
 )
 
 func Tools(svc *logicentityaccess.Service) []tool.Entry {

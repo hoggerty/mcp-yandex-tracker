@@ -2,8 +2,8 @@
 package entitylink
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicentitylink "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/entitylink"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicentitylink "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/entitylink"
 )
 
 func Tools(svc *logicentitylink.Service) []tool.Entry {

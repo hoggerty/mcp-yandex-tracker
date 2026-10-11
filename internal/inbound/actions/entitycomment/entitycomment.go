@@ -2,8 +2,8 @@
 package entitycomment
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicentitycomment "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/entitycomment"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicentitycomment "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/entitycomment"
 )
 
 func Tools(svc *logicentitycomment.Service) []tool.Entry {

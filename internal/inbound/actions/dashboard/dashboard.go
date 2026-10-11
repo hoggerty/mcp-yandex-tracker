@@ -2,8 +2,8 @@
 package dashboard
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicdashboard "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/dashboard"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicdashboard "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/dashboard"
 )
 
 func Tools(svc *logicdashboard.Service) []tool.Entry {

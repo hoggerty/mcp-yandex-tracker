@@ -2,8 +2,8 @@
 package entityattachment
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicentityattachment "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/entityattachment"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicentityattachment "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/entityattachment"
 )
 
 func Tools(svc *logicentityattachment.Service) []tool.Entry {

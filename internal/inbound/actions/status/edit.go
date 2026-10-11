@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicstatus "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/status"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicstatus "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/status"
 )
 
 type EditTool struct{ Svc *logicstatus.Service }

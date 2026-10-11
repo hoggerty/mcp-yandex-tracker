@@ -2,8 +2,8 @@
 package version
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicversion "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/version"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicversion "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/version"
 )
 
 func Tools(svc *logicversion.Service) []tool.Entry {

@@ -2,8 +2,8 @@
 package autoaction
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicautoaction "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/autoaction"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicautoaction "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/autoaction"
 )
 
 func Tools(svc *logicautoaction.Service) []tool.Entry {

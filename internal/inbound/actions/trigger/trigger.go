@@ -2,8 +2,8 @@
 package trigger
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logictrigger "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/trigger"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logictrigger "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/trigger"
 )
 
 func Tools(svc *logictrigger.Service) []tool.Entry {

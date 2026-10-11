@@ -4,8 +4,8 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
-	"github.com/hoggerty/yandex-tracker-mcp/internal/outbound/trackerapi"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/logic/safety"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/outbound/trackerapi"
 )
 
 func (s *Service) SearchSafety() safety.Level { return safety.ReadOnly }

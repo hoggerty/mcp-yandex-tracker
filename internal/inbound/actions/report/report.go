@@ -2,8 +2,8 @@
 package report
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicreport "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/report"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicreport "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/report"
 )
 
 func Tools(svc *logicreport.Service) []tool.Entry {

@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicentitycomment "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/entitycomment"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicentitycomment "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/entitycomment"
 )
 
 type EditTool struct{ Svc *logicentitycomment.Service }
