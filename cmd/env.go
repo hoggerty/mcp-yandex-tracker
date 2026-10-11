@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/wire/config"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/wire/config"
 )
 
 type envVar struct {

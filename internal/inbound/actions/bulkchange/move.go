@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicbulkchange "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/bulkchange"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicbulkchange "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/bulkchange"
 )
 
 type MoveTool struct{ Svc *logicbulkchange.Service }

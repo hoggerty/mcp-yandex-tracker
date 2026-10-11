@@ -2,8 +2,8 @@
 package sprint
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicsprint "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/sprint"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicsprint "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/sprint"
 )
 
 func Tools(svc *logicsprint.Service) []tool.Entry {

@@ -2,8 +2,8 @@
 package macro
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicmacro "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/macro"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicmacro "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/macro"
 )
 
 func Tools(svc *logicmacro.Service) []tool.Entry {

@@ -2,8 +2,8 @@
 package status
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicstatus "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/status"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicstatus "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/status"
 )
 
 func Tools(svc *logicstatus.Service) []tool.Entry {

@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicautoaction "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/autoaction"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicautoaction "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/autoaction"
 )
 
 type GetTool struct{ Svc *logicautoaction.Service }

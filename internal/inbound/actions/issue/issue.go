@@ -2,8 +2,8 @@
 package issue
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicissue "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/issue"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicissue "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/issue"
 )
 
 func Tools(svc *logicissue.Service) []tool.Entry {

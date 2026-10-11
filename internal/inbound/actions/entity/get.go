@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicentity "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/entity"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicentity "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/entity"
 )
 
 type GetTool struct{ Svc *logicentity.Service }

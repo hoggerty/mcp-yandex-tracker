@@ -2,8 +2,8 @@
 package priority
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicpriority "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/priority"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicpriority "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/priority"
 )
 
 func Tools(svc *logicpriority.Service) []tool.Entry {

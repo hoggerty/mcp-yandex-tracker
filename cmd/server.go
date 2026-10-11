@@ -4,7 +4,7 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 	"github.com/spf13/cobra"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/wire"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/wire"
 )
 
 // RunServer starts the MCP server over stdio.

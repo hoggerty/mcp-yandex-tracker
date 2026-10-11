@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicpriority "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/priority"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicpriority "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/priority"
 )
 
 type EditTool struct{ Svc *logicpriority.Service }

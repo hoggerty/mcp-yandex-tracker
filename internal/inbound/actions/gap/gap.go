@@ -2,8 +2,8 @@
 package gap
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicgap "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/gap"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicgap "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/gap"
 )
 
 func Tools(svc *logicgap.Service) []tool.Entry {

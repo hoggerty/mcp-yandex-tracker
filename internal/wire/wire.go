@@ -3,11 +3,11 @@ package wire
 import (
 	"github.com/mark3labs/mcp-go/server"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound"
-	"github.com/hoggerty/yandex-tracker-mcp/internal/logic"
-	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
-	"github.com/hoggerty/yandex-tracker-mcp/internal/outbound/trackerapi"
-	"github.com/hoggerty/yandex-tracker-mcp/internal/wire/config"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/logic"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/logic/safety"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/outbound/trackerapi"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/wire/config"
 )
 
 // NewServer builds a Yandex Tracker MCP server with all tools registered.

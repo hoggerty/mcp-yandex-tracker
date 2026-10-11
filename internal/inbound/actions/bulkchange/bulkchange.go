@@ -2,8 +2,8 @@
 package bulkchange
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicbulkchange "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/bulkchange"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicbulkchange "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/bulkchange"
 )
 
 func Tools(svc *logicbulkchange.Service) []tool.Entry {

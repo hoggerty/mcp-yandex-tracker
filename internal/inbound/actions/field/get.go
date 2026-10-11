@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicfield "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/field"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicfield "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/field"
 )
 
 type GetTool struct{ Svc *logicfield.Service }

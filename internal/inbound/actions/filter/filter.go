@@ -2,8 +2,8 @@
 package filter
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicfilter "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/filter"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicfilter "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/filter"
 )
 
 func Tools(svc *logicfilter.Service) []tool.Entry {

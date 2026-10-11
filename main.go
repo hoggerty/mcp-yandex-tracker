@@ -4,7 +4,7 @@
 package main
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/cmd"
+	"github.com/hoggerty/mcp-yandex-tracker/cmd"
 )
 
 func main() {

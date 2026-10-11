@@ -2,8 +2,8 @@
 package externallink
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicexternallink "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/externallink"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicexternallink "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/externallink"
 )
 
 func Tools(svc *logicexternallink.Service) []tool.Entry {

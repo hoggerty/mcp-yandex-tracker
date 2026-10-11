@@ -2,8 +2,8 @@
 package resolution
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicresolution "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/resolution"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicresolution "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/resolution"
 )
 
 func Tools(svc *logicresolution.Service) []tool.Entry {

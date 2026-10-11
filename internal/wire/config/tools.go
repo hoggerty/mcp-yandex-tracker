@@ -3,7 +3,7 @@ package config
 import (
 	"fmt"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/logic/safety"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/logic/safety"
 )
 
 type ToolsConfig struct {

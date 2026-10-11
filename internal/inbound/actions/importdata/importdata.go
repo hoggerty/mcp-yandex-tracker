@@ -2,8 +2,8 @@
 package importdata
 
 import (
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/tool"
-	logicimportdata "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/importdata"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
+	logicimportdata "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/importdata"
 )
 
 func Tools(svc *logicimportdata.Service) []tool.Entry {

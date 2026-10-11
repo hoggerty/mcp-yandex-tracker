@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicboard "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/board"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicboard "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/board"
 )
 
 type DeleteTool struct{ Svc *logicboard.Service }

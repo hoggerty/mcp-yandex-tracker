@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicimportdata "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/importdata"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicimportdata "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/importdata"
 )
 
 type TicketTool struct{ Svc *logicimportdata.Service }

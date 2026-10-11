@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicdashboard "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/dashboard"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicdashboard "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/dashboard"
 )
 
 type CycleTimeWidgetCreateTool struct{ Svc *logicdashboard.Service }

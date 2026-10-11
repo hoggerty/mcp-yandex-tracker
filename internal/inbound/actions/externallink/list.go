@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicexternallink "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/externallink"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicexternallink "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/externallink"
 )
 
 type ListTool struct{ Svc *logicexternallink.Service }

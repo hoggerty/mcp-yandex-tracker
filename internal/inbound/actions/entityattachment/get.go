@@ -5,8 +5,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 
-	"github.com/hoggerty/yandex-tracker-mcp/internal/inbound/result"
-	logicentityattachment "github.com/hoggerty/yandex-tracker-mcp/internal/logic/actions/entityattachment"
+	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/result"
+	logicentityattachment "github.com/hoggerty/mcp-yandex-tracker/internal/logic/actions/entityattachment"
 )
 
 type GetTool struct {
