@@ -35,7 +35,10 @@ func NewServer(version string) (*server.MCPServer, error) {
 	svcs := logic.New(client, guard)
 
 	s := server.NewMCPServer("yandex-tracker-mcp", version)
-	policy := inbound.Policy{Mode: cfg.Tools.Mode, DisabledTools: cfg.Tools.DisabledTools}
+	policy := inbound.Policy{
+		Mode:         cfg.Tools.Mode,
+		EnabledTools: cfg.Tools.Tools,
+	}
 	inbound.RegisterTools(s, svcs, policy)
 	return s, nil
 }
