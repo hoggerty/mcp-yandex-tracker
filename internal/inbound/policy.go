@@ -14,8 +14,12 @@ import (
 // to guard operation execution (safety.Guard), so a mode-disabled tool is
 // unavailable at both layers from a single source of truth.
 type Policy struct {
-	Mode          safety.Mode
-	DisabledTools []string
+	Mode safety.Mode
+	// EnabledTools lists glob patterns (as accepted by path.Match) matched
+	// against a tool's name; a tool is exposed only if it matches at least
+	// one of them. An empty slice disables this filter, exposing every tool
+	// permitted by Mode.
+	EnabledTools []string
 }
 
 // Allow reports whether e should be registered under this policy.
@@ -24,12 +28,17 @@ func (p Policy) Allow(e tool.Entry) bool {
 		return false
 	}
 	name := e.Tool.Description().Name
-	for _, pattern := range p.DisabledTools {
+	return len(p.EnabledTools) == 0 || matchesAny(p.EnabledTools, name)
+}
+
+// matchesAny reports whether name matches any of the given glob patterns.
+func matchesAny(patterns []string, name string) bool {
+	for _, pattern := range patterns {
 		if matched, _ := path.Match(pattern, name); matched {
-			return false
+			return true
 		}
 	}
-	return true
+	return false
 }
 
 // Apply filters entries down to those allowed by the policy.
