@@ -4,7 +4,6 @@ package cmd
 import (
 	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
 )
 
@@ -20,10 +19,7 @@ var rootCmd = &cobra.Command{
 }
 
 func init() {
-	// .env is optional
-	if err := godotenv.Load(); err != nil && !os.IsNotExist(err) {
-		fatalf("failed to load .env: %v", err)
-	}
+	loadEnvFile()
 
 	rootCmd.AddCommand(RunServer)
 	rootCmd.AddCommand(RunInit)

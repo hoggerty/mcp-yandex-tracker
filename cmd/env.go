@@ -4,7 +4,10 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
+
+	"github.com/joho/godotenv"
 
 	"github.com/hoggerty/mcp-yandex-tracker/internal/wire/config"
 )
@@ -12,6 +15,34 @@ import (
 type envVar struct {
 	key   string
 	value string
+}
+
+// loadEnvFile loads .env into the process environment. It looks in the
+// current directory first, matching where `init` writes it when run from a
+// repo checkout (see writeEnvFile in prompt.go). If that's not found — e.g.
+// the binary was installed elsewhere and is invoked by name via PATH, or run
+// by something like systemd with a different working directory — it falls
+// back to a .env next to the executable itself, so a copy of the binary
+// with its own .env alongside it keeps working regardless of cwd.
+//
+// Neither call overrides variables already set in the real environment
+// (godotenv.Load's behavior), so this never shadows explicit env vars.
+func loadEnvFile() {
+	if err := godotenv.Load(); err == nil {
+		return
+	} else if !os.IsNotExist(err) {
+		fatalf("failed to load .env: %v", err)
+	}
+
+	bin, err := os.Executable()
+	if err != nil {
+		return
+	}
+
+	envPath := filepath.Join(filepath.Dir(bin), ".env")
+	if err := godotenv.Load(envPath); err != nil && !os.IsNotExist(err) {
+		fatalf("failed to load %s: %v", envPath, err)
+	}
 }
 
 // requireEnv returns the currently configured credentials, prompting the
@@ -31,8 +62,8 @@ func requireEnv() ([]envVar, bool) {
 }
 
 // loadedEnv reads the Tracker config from the process environment (populated
-// either directly or via .env, see cmd.go's init()), reusing the same
-// parsing and "one of OrgID/CloudOrgID" validation as the server itself.
+// either directly or via .env, see loadEnvFile), reusing the same parsing
+// and "one of OrgID/CloudOrgID" validation as the server itself.
 func loadedEnv() ([]envVar, bool) {
 	cfg, err := config.Load()
 	if err != nil {
