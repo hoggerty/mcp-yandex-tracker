@@ -273,6 +273,21 @@ MCP-клиентов (Claude Code, Codex и т.д.).
 регистрируются на MCP-сервере и не видны клиенту в списке доступных
 инструментов.
 
+## Установка
+
+Готовые бинарники для Linux, macOS и Windows (amd64 и arm64) лежат в
+[Releases](https://github.com/hoggerty/mcp-yandex-tracker/releases/latest).
+Скачайте архив под свою платформу, распакуйте и при желании сверьте контрольную
+сумму с `checksums.txt`.
+
+На macOS скачанный бинарник может блокироваться Gatekeeper'ом; снять карантин:
+
+```sh
+xattr -d com.apple.quarantine ./yandex-tracker-mcp
+```
+
+Сборка из исходников описана в [`dev/BUILD.md`](dev/BUILD.md).
+
 ## Запуск
 
 Бинарник — это CLI на [cobra](https://github.com/spf13/cobra) с подкомандой

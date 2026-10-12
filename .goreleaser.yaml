@@ -1,0 +1,62 @@
+# GoReleaser config: собирает бинарники и публикует GitHub Release по тегу vX.Y.Z.
+# Локальная проверка без публикации: goreleaser release --snapshot --clean
+# Документация: https://goreleaser.com
+version: 2
+
+project_name: yandex-tracker-mcp
+
+before:
+  hooks:
+    - go mod download
+    - go test ./...
+
+builds:
+  - id: yandex-tracker-mcp
+    main: .
+    binary: yandex-tracker-mcp
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    flags:
+      - -trimpath
+    ldflags:
+      # VERSION объявлена в cmd/cmd.go; та же переменная, что и в Makefile
+      - -s -w -X github.com/hoggerty/mcp-yandex-tracker/cmd.VERSION={{ .Tag }}
+    mod_timestamp: "{{ .CommitTimestamp }}"
+
+archives:
+  - id: default
+    formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - README.md
+      - LICENSE
+      - .env.example
+
+checksum:
+  name_template: checksums.txt
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^chore:"
+      - "^test:"
+      - "^ci:"
+
+release:
+  # теги вида v0.4.0-rc.1 публикуются как pre-release и не получают отметку Latest
+  prerelease: auto
