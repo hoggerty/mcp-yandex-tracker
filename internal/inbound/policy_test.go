@@ -2,6 +2,9 @@ package inbound
 
 import (
 	"context"
+	"io"
+	"os"
+	"strings"
 	"testing"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -167,5 +170,27 @@ func TestPolicyApply(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+
+func TestPolicyApplyWarnsOnUnmatchedPattern(t *testing.T) {
+	entries := []tool.Entry{entry("issue_get", safety.ReadOnly)}
+	p := Policy{Mode: safety.ModeFull, EnabledTools: []string{"isue_*"}}
+
+	r, w, err := os.Pipe()
+	if err != nil {
+		t.Fatal(err)
+	}
+	orig := os.Stderr
+	os.Stderr = w
+	p.Apply(entries)
+	_ = w.Close()
+	os.Stderr = orig
+
+	var buf strings.Builder
+	io.Copy(&buf, r) //nolint:errcheck
+
+	if !strings.Contains(buf.String(), `"isue_*"`) {
+		t.Errorf("Apply() stderr = %q, want a warning mentioning the unmatched pattern", buf.String())
 	}
 }
