@@ -65,7 +65,8 @@ func prompt(in *bufio.Scanner, question, def string) string {
 	}
 
 	if !in.Scan() {
-		return def
+		fmt.Println()
+		fatalf("стандартный ввод закрыт — интерактивная настройка невозможна. Задайте переменные окружения напрямую или через .env и повторите запуск.")
 	}
 
 	line := strings.TrimSpace(in.Text())
