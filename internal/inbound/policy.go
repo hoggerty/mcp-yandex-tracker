@@ -1,6 +1,8 @@
 package inbound
 
 import (
+	"fmt"
+	"os"
 	"path"
 
 	"github.com/hoggerty/mcp-yandex-tracker/internal/inbound/tool"
@@ -15,10 +17,9 @@ import (
 // unavailable at both layers from a single source of truth.
 type Policy struct {
 	Mode safety.Mode
-	// EnabledTools lists glob patterns (as accepted by path.Match) matched
-	// against a tool's name; a tool is exposed only if it matches at least
-	// one of them. An empty slice disables this filter, exposing every tool
-	// permitted by Mode.
+	// EnabledTools: path.Match glob patterns; a tool is exposed only if its
+	// name matches one of them. Empty means unrestricted — but from the
+	// environment that's unreachable, see ToolsConfig.Tools.
 	EnabledTools []string
 }
 
@@ -43,6 +44,12 @@ func matchesAny(patterns []string, name string) bool {
 
 // Apply filters entries down to those allowed by the policy.
 func (p Policy) Apply(entries []tool.Entry) []tool.Entry {
+	for _, pattern := range p.EnabledTools {
+		if !patternMatchesAny(pattern, entries) {
+			_, _ = fmt.Fprintf(os.Stderr, "yandex-tracker-mcp: EnabledTools pattern %q matches no known tool\n", pattern)
+		}
+	}
+
 	allowed := make([]tool.Entry, 0, len(entries))
 	for _, e := range entries {
 		if p.Allow(e) {
@@ -50,4 +57,14 @@ func (p Policy) Apply(entries []tool.Entry) []tool.Entry {
 		}
 	}
 	return allowed
+}
+
+// patternMatchesAny reports whether pattern matches any entry's tool name.
+func patternMatchesAny(pattern string, entries []tool.Entry) bool {
+	for _, e := range entries {
+		if matched, _ := path.Match(pattern, e.Tool.Description().Name); matched {
+			return true
+		}
+	}
+	return false
 }
