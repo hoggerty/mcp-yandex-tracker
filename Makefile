@@ -29,3 +29,5 @@ lint:
 .PHONY: clean
 clean:
 	rm -f $(BINARY)
+
+include tools/Makefile

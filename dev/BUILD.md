@@ -37,9 +37,13 @@ Workflow прогоняет тесты, собирает бинарники дл
 
 Теги с суффиксом (`v0.2.0-rc.1`) публикуются как pre-release и не становятся Latest.
 
+GoReleaser для локальной проверки не нужно устанавливать глобально — версия закреплена
+в `tools/go.mod` (Go tool dependency). `make release-check`/`make release-snapshot` сами
+соберут его в `tools/bin` при первом запуске.
+
 Проверить сборку локально без публикации (результат — в `dist/`):
 
 ```sh
-goreleaser check
-goreleaser release --snapshot --clean
+make release-check
+make release-snapshot
 ```
