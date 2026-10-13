@@ -288,6 +288,59 @@ xattr -d com.apple.quarantine ./yandex-tracker-mcp
 
 Сборка из исходников описана в [`dev/BUILD.md`](dev/BUILD.md).
 
+### Docker
+
+Образ: `ghcr.io/hoggerty/mcp-yandex-tracker:latest` (платформы `linux/amd64`,
+`linux/arm64`).
+
+Запуск в stdio (флаг `-i` обязателен):
+
+```sh
+docker run -i --rm -e YANDEX_TRACKER_TOKEN -e YANDEX_TRACKER_ORG_ID \
+  ghcr.io/hoggerty/mcp-yandex-tracker:latest
+```
+
+Пример конфигурации клиента:
+
+```json
+{
+  "mcpServers": {
+    "yandex-tracker": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", "YANDEX_TRACKER_TOKEN",
+        "-e", "YANDEX_TRACKER_ORG_ID",
+        "ghcr.io/hoggerty/mcp-yandex-tracker:latest"
+      ],
+      "env": {
+        "YANDEX_TRACKER_TOKEN": "y0_...",
+        "YANDEX_TRACKER_ORG_ID": "1234567"
+      }
+    }
+  }
+}
+```
+
+Claude Code:
+
+```sh
+claude mcp add -s user \
+  -e YANDEX_TRACKER_TOKEN=y0_... \
+  -e YANDEX_TRACKER_ORG_ID=1234567 \
+  --transport stdio yandex-tracker -- \
+  docker run -i --rm -e YANDEX_TRACKER_TOKEN -e YANDEX_TRACKER_ORG_ID \
+  ghcr.io/hoggerty/mcp-yandex-tracker:latest
+```
+
+HTTP-режим (при передаче флагов подкоманду `server` нужно указывать явно):
+
+```sh
+docker run --rm -p 8080:8080 \
+  -e YANDEX_TRACKER_TOKEN -e YANDEX_TRACKER_ORG_ID \
+  ghcr.io/hoggerty/mcp-yandex-tracker:latest server --transport http --http-addr :8080
+```
+
 ## Запуск
 
 Бинарник — это CLI на [cobra](https://github.com/spf13/cobra) с подкомандой

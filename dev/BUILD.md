@@ -37,6 +37,11 @@ Workflow прогоняет тесты, собирает бинарники дл
 
 Теги с суффиксом (`v0.2.0-rc.1`) публикуются как pre-release и не становятся Latest.
 
+Тот же workflow дополнительно собирает multi-arch Docker-образ (`linux/amd64`,
+`linux/arm64`) и публикует его в GHCR как `ghcr.io/hoggerty/mcp-yandex-tracker`
+с тегами `X.Y.Z` и `X.Y`; для тегов без суффикса (не pre-release) добавляется
+`latest`. Локальная сборка образа: `make docker` (результат — `ghcr.io/hoggerty/mcp-yandex-tracker:dev`).
+
 GoReleaser для локальной проверки не нужно устанавливать глобально — версия закреплена
 в `tools/go.mod` (Go tool dependency). `make release-check`/`make release-snapshot` сами
 соберут его в `tools/bin` при первом запуске.

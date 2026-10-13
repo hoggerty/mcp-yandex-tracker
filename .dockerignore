@@ -1,0 +1,10 @@
+.git
+.github
+.idea
+.env
+dist/
+tools/
+dev/
+*.test
+*.out
+/yandex-tracker-mcp
